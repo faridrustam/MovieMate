@@ -1,0 +1,212 @@
+[
+  {
+    "category": {
+      "categoryName": "Action",
+      "image": "https://example.com/action_category_image.jpg"
+    },
+    "movieName": "The Dark Knight",
+    "bacgroundImage": "https://example.com/thedarkknight_background.jpg",
+    "posterImage": "https://example.com/thedarkknight_poster.jpg",
+    "rating": 9.0,
+    "releaseDate": "2008",
+    "time": "152 minutes",
+    "description": "Batman faces the Joker, a criminal mastermind, in a thrilling action-packed tale.",
+    "trailer": "https://www.youtube.com/watch?v=EXeTwQWrcwY"
+  },
+  {
+    "category": {
+      "categoryName": "Action",
+      "image": "https://example.com/action_category_image.jpg"
+    },
+    "movieName": "Mad Max: Fury Road",
+    "bacgroundImage": "https://example.com/madmax_background.jpg",
+    "posterImage": "https://example.com/madmax_poster.jpg",
+    "rating": 8.1,
+    "releaseDate": "2015",
+    "time": "120 minutes",
+    "description": "A high-octane chase through a post-apocalyptic desert.",
+    "trailer": "https://www.youtube.com/watch?v=hEJnMQG9ev8"
+  },
+  {
+    "category": {
+      "categoryName": "Action",
+      "image": "https://example.com/action_category_image.jpg"
+    },
+    "movieName": "Gladiator",
+    "bacgroundImage": "https://example.com/gladiator_background.jpg",
+    "posterImage": "https://example.com/gladiator_poster.jpg",
+    "rating": 8.5,
+    "releaseDate": "2000",
+    "time": "155 minutes",
+    "description": "A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family.",
+    "trailer": "https://www.youtube.com/watch?v=owK1qxDselE"
+  },
+  {
+    "category": {
+      "categoryName": "Comedy",
+      "image": "https://example.com/comedy_category_image.jpg"
+    },
+    "movieName": "The Grand Budapest Hotel",
+    "bacgroundImage": "https://example.com/grandbudapesthotel_background.jpg",
+    "posterImage": "https://example.com/grandbudapesthotel_poster.jpg",
+    "rating": 8.1,
+    "releaseDate": "2014",
+    "time": "99 minutes",
+    "description": "The adventures of a hotel concierge and his protégé.",
+    "trailer": "https://www.youtube.com/watch?v=1Fg5iWmQjwk"
+  },
+  {
+    "category": {
+      "categoryName": "Comedy",
+      "image": "https://example.com/comedy_category_image.jpg"
+    },
+    "movieName": "Superbad",
+    "bacgroundImage": "https://example.com/superbad_background.jpg",
+    "posterImage": "https://example.com/superbad_poster.jpg",
+    "rating": 7.6,
+    "releaseDate": "2007",
+    "time": "113 minutes",
+    "description": "Two high school friends navigate their final days before college.",
+    "trailer": "https://www.youtube.com/watch?v=MNpoTxeydiY"
+  },
+  {
+    "category": {
+      "categoryName": "Comedy",
+      "image": "https://example.com/comedy_category_image.jpg"
+    },
+    "movieName": "The Hangover",
+    "bacgroundImage": "https://example.com/thehangover_background.jpg",
+    "posterImage": "https://example.com/thehangover_poster.jpg",
+    "rating": 7.7,
+    "releaseDate": "2009",
+    "time": "100 minutes",
+    "description": "A group of friends tries to piece together the events of their wild bachelor party in Las Vegas.",
+    "trailer": "https://www.youtube.com/watch?v=vhFVZsk3X7o"
+  },
+  {
+    "category": {
+      "categoryName": "Drama",
+      "image": "https://example.com/drama_category_image.jpg"
+    },
+    "movieName": "The Shawshank Redemption",
+    "bacgroundImage": "https://example.com/shawshank_background.jpg",
+    "posterImage": "https://example.com/shawshank_poster.jpg",
+    "rating": 9.3,
+    "releaseDate": "1994",
+    "time": "142 minutes",
+    "description": "The story of hope and friendship in a prison setting.",
+    "trailer": "https://www.youtube.com/watch?v=6hB3S9bIaco"
+  },
+  {
+    "category": {
+      "categoryName": "Drama",
+      "image": "https://example.com/drama_category_image.jpg"
+    },
+    "movieName": "Forrest Gump",
+    "bacgroundImage": "https://example.com/forrestgump_background.jpg",
+    "posterImage": "https://example.com/forrestgump_poster.jpg",
+    "rating": 8.8,
+    "releaseDate": "1994",
+    "time": "142 minutes",
+    "description": "A heartwarming story of a man with extraordinary experiences.",
+    "trailer": "https://www.youtube.com/watch?v=bLvqoHBptjg"
+  },
+  {
+    "category": {
+      "categoryName": "Drama",
+      "image": "https://example.com/drama_category_image.jpg"
+    },
+    "movieName": "A Beautiful Mind",
+    "bacgroundImage": "https://example.com/abeautifulmind_background.jpg",
+    "posterImage": "https://example.com/abeautifulmind_poster.jpg",
+    "rating": 8.2,
+    "releaseDate": "2001",
+    "time": "135 minutes",
+    "description": "The true story of a brilliant but troubled mathematician who struggles with schizophrenia.",
+    "trailer": "https://www.youtube.com/watch?v=2xL2GrbWnzo"
+  },
+  {
+    "category": {
+      "categoryName": "Fantasy",
+      "image": "https://example.com/fantasy_category_image.jpg"
+    },
+    "movieName": "The Lord of the Rings: The Return of the King",
+    "bacgroundImage": "https://example.com/lotr_background.jpg",
+    "posterImage": "https://example.com/lotr_poster.jpg",
+    "rating": 9.0,
+    "releaseDate": "2003",
+    "time": "201 minutes",
+    "description": "The epic conclusion to the battle for Middle-earth.",
+    "trailer": "https://www.youtube.com/watch?v=r5X-hFf6Bwo"
+  },
+  {
+    "category": {
+      "categoryName": "Fantasy",
+      "image": "https://example.com/fantasy_category_image.jpg"
+    },
+    "movieName": "Harry Potter and the Philosopher's Stone",
+    "bacgroundImage": "https://example.com/harrypotter_background.jpg",
+    "posterImage": "https://example.com/harrypotter_poster.jpg",
+    "rating": 7.6,
+    "releaseDate": "2001",
+    "time": "152 minutes",
+    "description": "A young wizard begins his magical journey.",
+    "trailer": "https://www.youtube.com/watch?v=VyHV0BRtdxo"
+  },
+  {
+    "category": {
+      "categoryName": "Fantasy",
+      "image": "https://example.com/fantasy_category_image.jpg"
+    },
+    "movieName": "The Chronicles of Narnia: The Lion, the Witch and the Wardrobe",
+    "bacgroundImage": "https://example.com/narnia_background.jpg",
+    "posterImage": "https://example.com/narnia_poster.jpg",
+    "rating": 6.9,
+    "releaseDate": "2005",
+    "time": "143 minutes",
+    "description": "Four siblings discover a magical world hidden inside a wardrobe and join the fight against an evil queen.",
+    "trailer": "https://www.youtube.com/watch?v=QbJ6g0K8tHE"
+  },
+  {
+    "category": {
+      "categoryName": "Romance",
+      "image": "https://example.com/romance_category_image.jpg"
+    },
+    "movieName": "The Notebook",
+    "bacgroundImage": "https://example.com/thenotebook_background.jpg",
+    "posterImage": "https://example.com/thenotebook_poster.jpg",
+    "rating": 7.8,
+    "releaseDate": "2004",
+    "time": "123 minutes",
+    "description": "A touching love story that transcends time, based on the Nicholas Sparks novel.",
+    "trailer": "https://www.youtube.com/watch?v=FC6biTjEyZw"
+  },
+  {
+    "category": {
+      "categoryName": "Romance",
+      "image": "https://example.com/romance_category_image.jpg"
+    },
+    "movieName": "Pride and Prejudice",
+    "bacgroundImage": "https://example.com/prideandprejudice_background.jpg",
+    "posterImage": "https://example.com/prideandprejudice_poster.jpg",
+    "rating": 7.8,
+    "releaseDate": "2005",
+    "time": "129 minutes",
+    "description": "A classic tale of love and misunderstanding set in Georgian England.",
+    "trailer": "https://www.youtube.com/watch?v=1dYv5u6v55Y"
+  },
+  {
+    "category": {
+      "categoryName": "Romance",
+      "image": "https://example.com/romance_category_image.jpg"
+    },
+    "movieName": "Titanic",
+    "bacgroundImage": "https://example.com/titanic_background.jpg",
+    "posterImage": "https://example.com/titanic_poster.jpg",
+    "rating": 7.9,
+    "releaseDate": "1997",
+    "time": "195 minutes",
+    "description": "A timeless romance aboard the ill-fated RMS Titanic.",
+    "trailer": "https://www.youtube.com/watch?v=2e-eXJ6HgkQ"
+  }
+]
