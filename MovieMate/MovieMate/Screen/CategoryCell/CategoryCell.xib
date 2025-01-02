@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="CategoryCell" customModule="MovieMate" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="80" height="50"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="80" height="50"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UZ3-kR-OcR">
+                        <rect key="frame" x="4" y="12" width="72" height="26"/>
+                        <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="UZ3-kR-OcR" secondAttribute="trailing" constant="4" id="Foa-0f-giw"/>
+                <constraint firstItem="UZ3-kR-OcR" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="12" id="Hrm-y0-xuC"/>
+                <constraint firstItem="UZ3-kR-OcR" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="PmO-1v-K5N"/>
+                <constraint firstItem="UZ3-kR-OcR" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="4" id="i1b-UV-XQ5"/>
+            </constraints>
+            <size key="customSize" width="81" height="50"/>
+            <connections>
+                <outlet property="categoryLabel" destination="UZ3-kR-OcR" id="1nx-RZ-8jC"/>
+            </connections>
+            <point key="canvasLocation" x="-44.274809160305338" y="19.718309859154932"/>
+        </collectionViewCell>
+    </objects>
+</document>

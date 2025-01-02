@@ -9,18 +9,21 @@ import UIKit
 
 class MovieSearchVC: UIViewController {
     
-    @IBOutlet var controllerView: UIView!
-    @IBOutlet weak var backgroundSearch: UIView!
-    @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet private var controllerView: UIView!
+    @IBOutlet weak private var backgroundSearch: UIView!
+    @IBOutlet weak private var searchTextField: UITextField!
+    @IBOutlet weak private var collection: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        configureUI()
     }
     
     func configureUI() {
         backgroundSearch.layer.cornerRadius = backgroundSearch.frame.height / 2
         backgroundSearch.backgroundColor = UIColor(named: "SearchBarColor")
         searchTextField.attributedPlaceholder = NSAttributedString(string: "Search", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        controllerView.backgroundColor = UIColor(named: "BackgroundColor")
+        collection.backgroundColor = UIColor(named: "BackgroundColor")
     }
 }
