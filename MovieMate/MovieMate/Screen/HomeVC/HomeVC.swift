@@ -10,8 +10,6 @@ import UIKit
 class HomeVC: UIViewController {
 
     @IBOutlet private var controllerView: UIView!
-    @IBOutlet weak private var backgroundSearch: UIView!
-    @IBOutlet weak private var searcTextField: UITextField!
     @IBOutlet weak private var collection: UICollectionView!
     
     let viewModel = HomeViewModel()
@@ -23,12 +21,16 @@ class HomeVC: UIViewController {
     }
     
     func configureUI() {
-        backgroundSearch.layer.cornerRadius = backgroundSearch.frame.height / 2
+        collection.delegate = self
+        collection.dataSource = self
         
-        backgroundSearch.backgroundColor = UIColor(named: "SearchBarColor")
         collection.backgroundColor = UIColor(named: "BackgroundColor")
         controllerView.backgroundColor = UIColor(named: "BackgroundColor")
-        searcTextField.attributedPlaceholder = NSAttributedString(string: "Search", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        
+        collection.register(UINib(nibName: "MovieCell", bundle: nil), forCellWithReuseIdentifier: "MovieCell")
+        collection.register(UINib(nibName: "HeaderReusableView", bundle: nil),
+                            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                            withReuseIdentifier: "HeaderReusableView")
     }
 }
 
@@ -39,8 +41,8 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCell", for: indexPath) as! MovieCell
-        cell.callElement(movie: viewModel.movieList[indexPath.row].category?.image ?? "")
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(MovieCell.self)", for: indexPath) as! MovieCell
+        cell.callElement(movie: viewModel.movieList[indexPath.item].posterImage ?? "")
         
         return cell
     }
@@ -53,6 +55,17 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         .init(width: 100, height: 145)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "HeaderReusableView", for: indexPath) as! HeaderReusableView
+        header.configure(data: viewModel.movieList)
+        
+        return header
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        .init(width: 393, height: 250)
     }
 }
 

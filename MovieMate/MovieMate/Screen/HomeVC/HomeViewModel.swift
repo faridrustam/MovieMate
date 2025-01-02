@@ -11,12 +11,12 @@ class HomeViewModel {
     var movieList: [MovieModel] = []
     
     func getMovieList() {
-        if let fileUrl = Bundle.main.url(forResource: "movies", withExtension: "json") {
+        if let fileUrl = Bundle.main.url(forResource: "Movies", withExtension: "json") {
             do {
                 let data = try Data(contentsOf: fileUrl)
                 movieList = try JSONDecoder().decode([MovieModel].self, from: data)
             } catch {
-                print("Error reading file \(fileUrl)")
+                print(error.localizedDescription)
             }
         }
     }
