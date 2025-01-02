@@ -32,9 +32,6 @@ class HomeVC: UIViewController {
         collection.register(UINib(nibName: "HeaderReusableView", bundle: nil),
                             forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                             withReuseIdentifier: "HeaderReusableView")
-        collection.register(UINib(nibName: "FooterReusableView", bundle: nil),
-                            forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter,
-                            withReuseIdentifier: "FooterReusableView")
     }
 }
 
@@ -51,25 +48,18 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let controller = storyboard?.instantiateViewController(identifier: "\(MovieDetailVC.self)") as! MovieDetailVC
-        
-        navigationController?.show(controller, sender: nil)
-    }
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        let controller = storyboard?.instantiateViewController(identifier: "\(MovieDetailVC.self)") as! MovieDetailVC
+//        
+//        navigationController?.show(controller, sender: nil)
+//    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         .init(width: 100, height: 145)
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        
-        if kind == UICollectionView.elementKindSectionFooter {
-            let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "FooterReusableView", for: indexPath) as! FooterReusableView
-            footer.configure(data: viewModel.movieList)
-            
-            return footer
-        }
-        
+
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "HeaderReusableView", for: indexPath) as! HeaderReusableView
         header.configure(data: viewModel.movieList)
         
@@ -78,9 +68,5 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         .init(width: 393, height: 250)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        .init(width: 393, height: 100)
     }
 }

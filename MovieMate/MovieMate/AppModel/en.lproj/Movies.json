@@ -1,8 +1,7 @@
 [
   {
     "category": {
-      "categoryName": "Action",
-      "image": "https://example.com/action_category_image.jpg"
+      "categoryName": "Action"
     },
     "movieName": "The Dark Knight",
     "bacgroundImage": "https://example.com/thedarkknight_background.jpg",
@@ -15,8 +14,7 @@
   },
   {
     "category": {
-      "categoryName": "Action",
-      "image": "https://example.com/action_category_image.jpg"
+      "categoryName": "Action"
     },
     "movieName": "Mad Max: Fury Road",
     "bacgroundImage": "https://example.com/madmax_background.jpg",
@@ -29,8 +27,7 @@
   },
   {
     "category": {
-      "categoryName": "Action",
-      "image": "https://example.com/action_category_image.jpg"
+      "categoryName": "Action"
     },
     "movieName": "Gladiator",
     "bacgroundImage": "https://example.com/gladiator_background.jpg",
@@ -43,8 +40,7 @@
   },
   {
     "category": {
-      "categoryName": "Comedy",
-      "image": "https://example.com/comedy_category_image.jpg"
+      "categoryName": "Comedy"
     },
     "movieName": "The Grand Budapest Hotel",
     "bacgroundImage": "https://example.com/grandbudapesthotel_background.jpg",
@@ -57,8 +53,7 @@
   },
   {
     "category": {
-      "categoryName": "Comedy",
-      "image": "https://example.com/comedy_category_image.jpg"
+      "categoryName": "Comedy"
     },
     "movieName": "Superbad",
     "bacgroundImage": "https://example.com/superbad_background.jpg",
@@ -71,8 +66,7 @@
   },
   {
     "category": {
-      "categoryName": "Comedy",
-      "image": "https://example.com/comedy_category_image.jpg"
+      "categoryName": "Comedy"
     },
     "movieName": "The Hangover",
     "bacgroundImage": "https://example.com/thehangover_background.jpg",
@@ -85,8 +79,7 @@
   },
   {
     "category": {
-      "categoryName": "Drama",
-      "image": "https://example.com/drama_category_image.jpg"
+      "categoryName": "Drama"
     },
     "movieName": "The Shawshank Redemption",
     "bacgroundImage": "https://example.com/shawshank_background.jpg",
@@ -99,8 +92,7 @@
   },
   {
     "category": {
-      "categoryName": "Drama",
-      "image": "https://example.com/drama_category_image.jpg"
+      "categoryName": "Drama"
     },
     "movieName": "Forrest Gump",
     "bacgroundImage": "https://example.com/forrestgump_background.jpg",
@@ -113,8 +105,7 @@
   },
   {
     "category": {
-      "categoryName": "Drama",
-      "image": "https://example.com/drama_category_image.jpg"
+      "categoryName": "Drama"
     },
     "movieName": "A Beautiful Mind",
     "bacgroundImage": "https://example.com/abeautifulmind_background.jpg",
@@ -127,8 +118,7 @@
   },
   {
     "category": {
-      "categoryName": "Fantasy",
-      "image": "https://example.com/fantasy_category_image.jpg"
+      "categoryName": "Fantasy"
     },
     "movieName": "The Lord of the Rings: The Return of the King",
     "bacgroundImage": "https://example.com/lotr_background.jpg",
@@ -141,8 +131,7 @@
   },
   {
     "category": {
-      "categoryName": "Fantasy",
-      "image": "https://example.com/fantasy_category_image.jpg"
+      "categoryName": "Fantasy"
     },
     "movieName": "Harry Potter and the Philosopher's Stone",
     "bacgroundImage": "https://example.com/harrypotter_background.jpg",
@@ -155,8 +144,7 @@
   },
   {
     "category": {
-      "categoryName": "Fantasy",
-      "image": "https://example.com/fantasy_category_image.jpg"
+      "categoryName": "Fantasy"
     },
     "movieName": "The Chronicles of Narnia: The Lion, the Witch and the Wardrobe",
     "bacgroundImage": "https://example.com/narnia_background.jpg",
@@ -169,8 +157,7 @@
   },
   {
     "category": {
-      "categoryName": "Romance",
-      "image": "https://example.com/romance_category_image.jpg"
+      "categoryName": "Romance"
     },
     "movieName": "The Notebook",
     "bacgroundImage": "https://example.com/thenotebook_background.jpg",
@@ -183,8 +170,7 @@
   },
   {
     "category": {
-      "categoryName": "Romance",
-      "image": "https://example.com/romance_category_image.jpg"
+      "categoryName": "Romance"
     },
     "movieName": "Pride and Prejudice",
     "bacgroundImage": "https://example.com/prideandprejudice_background.jpg",
@@ -197,8 +183,7 @@
   },
   {
     "category": {
-      "categoryName": "Romance",
-      "image": "https://example.com/romance_category_image.jpg"
+      "categoryName": "Romance"
     },
     "movieName": "Titanic",
     "bacgroundImage": "https://example.com/titanic_background.jpg",

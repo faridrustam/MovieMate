@@ -11,11 +11,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="U6b-Vx-4bR" customClass="HeaderReusableView" customModule="MovieMate" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="393" height="250"/>
+            <rect key="frame" x="0.0" y="0.0" width="393" height="302"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="tZx-xd-HbR">
-                    <rect key="frame" x="0.0" y="0.0" width="393" height="250"/>
+                    <rect key="frame" x="0.0" y="52" width="393" height="250"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="20" minimumInteritemSpacing="10" id="WzQ-Ga-2QK">
                         <size key="itemSize" width="128" height="128"/>
@@ -24,18 +24,26 @@
                         <inset key="sectionInset" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What do you want to watch?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hXR-Kd-OV6">
+                    <rect key="frame" x="16" y="12" width="287.33333333333331" height="24"/>
+                    <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="20"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="VXr-Tz-HHm"/>
             <constraints>
-                <constraint firstItem="tZx-xd-HbR" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" id="BPZ-Bg-ERc"/>
                 <constraint firstAttribute="bottom" secondItem="tZx-xd-HbR" secondAttribute="bottom" id="esK-NH-zqy"/>
                 <constraint firstItem="tZx-xd-HbR" firstAttribute="trailing" secondItem="VXr-Tz-HHm" secondAttribute="trailing" id="ipe-W6-30h"/>
+                <constraint firstItem="hXR-Kd-OV6" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" constant="16" id="pc9-OS-Ee5"/>
+                <constraint firstItem="hXR-Kd-OV6" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" constant="12" id="sfS-hO-GpF"/>
+                <constraint firstItem="tZx-xd-HbR" firstAttribute="top" secondItem="hXR-Kd-OV6" secondAttribute="bottom" constant="16" id="ubw-lp-dcR"/>
                 <constraint firstItem="tZx-xd-HbR" firstAttribute="leading" secondItem="VXr-Tz-HHm" secondAttribute="leading" id="y5a-XR-UAh"/>
             </constraints>
             <connections>
                 <outlet property="collection" destination="tZx-xd-HbR" id="lPa-Ud-Fnr"/>
             </connections>
-            <point key="canvasLocation" x="-67.938931297709928" y="38.732394366197184"/>
+            <point key="canvasLocation" x="-67.938931297709928" y="20.422535211267608"/>
         </collectionReusableView>
     </objects>
     <resources>
