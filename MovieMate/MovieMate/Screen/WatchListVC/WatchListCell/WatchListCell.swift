@@ -8,7 +8,7 @@
 import UIKit
 
 class WatchListCell: UITableViewCell {
-
+    
     @IBOutlet weak private var poster: UIImageView!
     @IBOutlet weak private var movieName: UILabel!
     @IBOutlet weak private var ratingLabel: UILabel!
@@ -21,7 +21,7 @@ class WatchListCell: UITableViewCell {
         poster.layer.cornerRadius = poster.frame.height / 4
         poster.clipsToBounds = true
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }

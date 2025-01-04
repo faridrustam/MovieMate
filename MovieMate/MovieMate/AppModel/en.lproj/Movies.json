@@ -1,8 +1,6 @@
 [
   {
-    "category": {
-      "categoryName": "Action"
-    },
+    "categoryId": "1",
     "movieName": "The Dark Knight",
     "bacgroundImage": "https://example.com/thedarkknight_background.jpg",
     "posterImage": "TheDarkKnightPoster",
@@ -13,9 +11,7 @@
     "trailer": "https://www.youtube.com/watch?v=EXeTwQWrcwY"
   },
   {
-    "category": {
-      "categoryName": "Action"
-    },
+    "categoryId": "1",
     "movieName": "Mad Max: Fury Road",
     "bacgroundImage": "https://example.com/madmax_background.jpg",
     "posterImage": "MadMaxPoster",
@@ -26,9 +22,7 @@
     "trailer": "https://www.youtube.com/watch?v=hEJnMQG9ev8"
   },
   {
-    "category": {
-      "categoryName": "Action"
-    },
+    "categoryId": "1",
     "movieName": "Gladiator",
     "bacgroundImage": "https://example.com/gladiator_background.jpg",
     "posterImage": "GladiatorPoster",
@@ -39,9 +33,7 @@
     "trailer": "https://www.youtube.com/watch?v=owK1qxDselE"
   },
   {
-    "category": {
-      "categoryName": "Comedy"
-    },
+    "categoryId": "2",
     "movieName": "The Grand Budapest Hotel",
     "bacgroundImage": "https://example.com/grandbudapesthotel_background.jpg",
     "posterImage": "GrandBudapestPoster",
@@ -52,9 +44,7 @@
     "trailer": "https://www.youtube.com/watch?v=1Fg5iWmQjwk"
   },
   {
-    "category": {
-      "categoryName": "Comedy"
-    },
+    "categoryId": "2",
     "movieName": "Superbad",
     "bacgroundImage": "https://example.com/superbad_background.jpg",
     "posterImage": "SuperBadPoster",
@@ -65,9 +55,7 @@
     "trailer": "https://www.youtube.com/watch?v=MNpoTxeydiY"
   },
   {
-    "category": {
-      "categoryName": "Comedy"
-    },
+    "categoryId": "2",
     "movieName": "The Hangover",
     "bacgroundImage": "https://example.com/thehangover_background.jpg",
     "posterImage": "HangoverPoster",
@@ -78,9 +66,7 @@
     "trailer": "https://www.youtube.com/watch?v=vhFVZsk3X7o"
   },
   {
-    "category": {
-      "categoryName": "Drama"
-    },
+    "categoryId": "3",
     "movieName": "The Shawshank Redemption",
     "bacgroundImage": "https://example.com/shawshank_background.jpg",
     "posterImage": "ShawshankPoster",
@@ -91,9 +77,7 @@
     "trailer": "https://www.youtube.com/watch?v=6hB3S9bIaco"
   },
   {
-    "category": {
-      "categoryName": "Drama"
-    },
+    "categoryId": "3",
     "movieName": "Forrest Gump",
     "bacgroundImage": "https://example.com/forrestgump_background.jpg",
     "posterImage": "ForrestGumpPoster",
@@ -104,9 +88,7 @@
     "trailer": "https://www.youtube.com/watch?v=bLvqoHBptjg"
   },
   {
-    "category": {
-      "categoryName": "Drama"
-    },
+    "categoryId": "3",
     "movieName": "A Beautiful Mind",
     "bacgroundImage": "https://example.com/abeautifulmind_background.jpg",
     "posterImage": "BeautifulMindPoster",
@@ -117,9 +99,7 @@
     "trailer": "https://www.youtube.com/watch?v=2xL2GrbWnzo"
   },
   {
-    "category": {
-      "categoryName": "Fantasy"
-    },
+    "categoryId": "4",
     "movieName": "The Lord of the Rings: The Return of the King",
     "bacgroundImage": "https://example.com/lotr_background.jpg",
     "posterImage": "LordOfRingsPoster",
@@ -130,9 +110,7 @@
     "trailer": "https://www.youtube.com/watch?v=r5X-hFf6Bwo"
   },
   {
-    "category": {
-      "categoryName": "Fantasy"
-    },
+    "categoryId": "4",
     "movieName": "Harry Potter and the Philosopher's Stone",
     "bacgroundImage": "https://example.com/harrypotter_background.jpg",
     "posterImage": "HarryPotterPoster",
@@ -143,9 +121,7 @@
     "trailer": "https://www.youtube.com/watch?v=VyHV0BRtdxo"
   },
   {
-    "category": {
-      "categoryName": "Fantasy"
-    },
+    "categoryId": "4",
     "movieName": "The Chronicles of Narnia: The Lion, the Witch and the Wardrobe",
     "bacgroundImage": "https://example.com/narnia_background.jpg",
     "posterImage": "NarniaPoster",
@@ -156,9 +132,7 @@
     "trailer": "https://www.youtube.com/watch?v=QbJ6g0K8tHE"
   },
   {
-    "category": {
-      "categoryName": "Romance"
-    },
+    "categoryId": "5",
     "movieName": "The Notebook",
     "bacgroundImage": "https://example.com/thenotebook_background.jpg",
     "posterImage": "TheNoteBookPoster",
@@ -169,9 +143,7 @@
     "trailer": "https://www.youtube.com/watch?v=FC6biTjEyZw"
   },
   {
-    "category": {
-      "categoryName": "Romance"
-    },
+    "categoryId": "5",
     "movieName": "Pride and Prejudice",
     "bacgroundImage": "https://example.com/prideandprejudice_background.jpg",
     "posterImage": "PrideAndPejudicePoster",
@@ -182,9 +154,7 @@
     "trailer": "https://www.youtube.com/watch?v=1dYv5u6v55Y"
   },
   {
-    "category": {
-      "categoryName": "Romance"
-    },
+    "categoryId": "5",
     "movieName": "Titanic",
     "bacgroundImage": "https://example.com/titanic_background.jpg",
     "posterImage": "TitanicPoster",

@@ -4,38 +4,54 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="CategoryCell" customModule="MovieMate" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="80" height="50"/>
+            <rect key="frame" x="0.0" y="0.0" width="90" height="50"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="80" height="50"/>
+                <rect key="frame" x="0.0" y="0.0" width="90" height="50"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UZ3-kR-OcR">
-                        <rect key="frame" x="4" y="12" width="72" height="26"/>
-                        <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="15"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UZ3-kR-OcR">
+                        <rect key="frame" x="6.3333333333333357" y="14.666666666666666" width="77.333333333333314" height="20.666666666666671"/>
+                        <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dEn-3Z-pd4">
+                        <rect key="frame" x="6" y="44" width="78" height="2"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="78" id="1UK-yb-bPe"/>
+                            <constraint firstAttribute="height" constant="2" id="7tw-3P-KJ8"/>
+                        </constraints>
+                    </view>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="UZ3-kR-OcR" secondAttribute="trailing" constant="4" id="Foa-0f-giw"/>
-                <constraint firstItem="UZ3-kR-OcR" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="12" id="Hrm-y0-xuC"/>
-                <constraint firstItem="UZ3-kR-OcR" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="PmO-1v-K5N"/>
-                <constraint firstItem="UZ3-kR-OcR" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="4" id="i1b-UV-XQ5"/>
+                <constraint firstItem="dEn-3Z-pd4" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="6" id="23p-6T-d98"/>
+                <constraint firstItem="UZ3-kR-OcR" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="3vQ-3Z-sj6"/>
+                <constraint firstAttribute="bottom" secondItem="dEn-3Z-pd4" secondAttribute="bottom" constant="4" id="623-JS-aNg"/>
+                <constraint firstItem="UZ3-kR-OcR" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="Dhr-bA-vJl"/>
+                <constraint firstAttribute="trailing" secondItem="dEn-3Z-pd4" secondAttribute="trailing" constant="6" id="e9H-Pv-12v"/>
             </constraints>
             <size key="customSize" width="81" height="50"/>
             <connections>
                 <outlet property="categoryLabel" destination="UZ3-kR-OcR" id="1nx-RZ-8jC"/>
+                <outlet property="underlineView" destination="dEn-3Z-pd4" id="KBj-9p-efH"/>
             </connections>
             <point key="canvasLocation" x="-44.274809160305338" y="19.718309859154932"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

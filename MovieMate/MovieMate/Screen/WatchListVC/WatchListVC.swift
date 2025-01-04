@@ -49,7 +49,7 @@ extension WatchListVC: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "WatchListCell", for: indexPath) as! WatchListCell
         let data = watchList[indexPath.row]
         
-        cell.callElement(posterImage: data.posterImage ?? "", movie: data.movieName ?? "", rating: data.rating ?? 0, category: data.category?.categoryName ?? "", year: data.releaseDate ?? "", duration: data.time ?? "")
+        cell.callElement(posterImage: data.posterImage ?? "", movie: data.movieName ?? "", rating: data.rating ?? 0, category: data.categoryId ?? "", year: data.releaseDate ?? "", duration: data.time ?? "")
         
         return cell
     }

@@ -12,6 +12,7 @@ class HeaderReusableView: UICollectionReusableView {
     @IBOutlet weak var collection: UICollectionView!
 
     var movies: [MovieModel] = []
+    var movieTapped: ((MovieModel) -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,19 +34,20 @@ class HeaderReusableView: UICollectionReusableView {
 }
 
 extension HeaderReusableView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         movies.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCell", for: indexPath) as! MovieCell
-        cell.callElement(movie: movies[indexPath.item].posterImage ?? "")
+            cell.callElement(movie: movies[indexPath.item].posterImage ?? "")
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedMovie = movies[indexPath.item]
+        movieTapped?(selectedMovie)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

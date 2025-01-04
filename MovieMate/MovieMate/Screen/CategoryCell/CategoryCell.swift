@@ -10,13 +10,20 @@ import UIKit
 class CategoryCell: UICollectionViewCell {
 
     @IBOutlet weak private var categoryLabel: UILabel!
+    @IBOutlet weak var underlineView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         categoryLabel.textColor = .white
     }
 
-    func callElement(genre: String) {
-        categoryLabel.text = genre
+    func callElement(category: String, isSelected: Bool = false) {
+        categoryLabel.text = category
+        
+        if isSelected {
+            underlineView.backgroundColor = .white
+        } else {
+            underlineView.backgroundColor = .clear
+        }
     }
 }

@@ -7,12 +7,12 @@
 import Foundation
 
 struct CategoryModel: Codable {
+    let id: String?
     let categoryName: String?
-    let image: String?
 }
 
 struct MovieModel: Codable {
-    let category: CategoryModel?
+    let categoryId: String?
     let movieName: String?
     let bacgroundImage: String?
     let posterImage: String?
