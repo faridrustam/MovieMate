@@ -24,6 +24,8 @@ class MovieSearchVC: UIViewController {
     }
     
     func configureUI() {
+        navigationItem.title = "Search"
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         backgroundSearch.layer.cornerRadius = backgroundSearch.frame.height / 2
         backgroundSearch.backgroundColor = UIColor(named: "SearchBarColor")
         searchTextField.attributedPlaceholder = NSAttributedString(string: "Search", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
@@ -88,9 +90,12 @@ extension MovieSearchVC: UICollectionViewDataSource, UICollectionViewDelegate, U
         return cell
     }
     
-    //    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    //        <#code#>
-    //    }
+        func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+            let controller = storyboard?.instantiateViewController(withIdentifier: "\(MovieDetailVC.self)") as? MovieDetailVC
+            controller?.movieDetail = movies[indexPath.item]
+            
+            navigationController?.show(controller ?? UIViewController(), sender: nil)
+        }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         .init(width: 180, height: 300)

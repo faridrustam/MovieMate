@@ -25,7 +25,7 @@ class HomeVC: UIViewController {
     func configureUI() {
         collection.delegate = self
         collection.dataSource = self
-
+        
         collection.backgroundColor = UIColor(named: "BackgroundColor")
         controllerView.backgroundColor = UIColor(named: "BackgroundColor")
         
@@ -35,8 +35,7 @@ class HomeVC: UIViewController {
                             forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                             withReuseIdentifier: "HeaderReusableView")
         collection.register(UINib(nibName: "SegmentCell", bundle: nil),
-                             forCellWithReuseIdentifier: "SegmentCell")
-        //  step 1 : 3cu cell
+                            forCellWithReuseIdentifier: "SegmentCell")
         
         viewModel.callBack = { [weak self] in
             self?.collection.reloadData()
@@ -47,31 +46,47 @@ class HomeVC: UIViewController {
 extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        viewModel.movieList.count + 1
+        if !viewModel.filteredMovieList.isEmpty {
+            return viewModel.filteredMovieList.count + 1
+        } else {
+            return viewModel.movieList.count + 1
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.item != 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(MovieCell.self)", for: indexPath) as! MovieCell
             let movieIndex = indexPath.item - 1
-            cell.callElement(movie: viewModel.movieList[movieIndex].posterImage ?? "")
+            let movieList = viewModel.filteredMovieList.isEmpty ? viewModel.movieList : viewModel.filteredMovieList
+            cell.callElement(movie: movieList[movieIndex].posterImage ?? "")
             
             return cell
         }
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(SegmentCell.self)", for: indexPath) as! SegmentCell
-            cell.configure(data: viewModel.categoryList)
-            
-            return cell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(SegmentCell.self)", for: indexPath) as! SegmentCell
+        cell.configure(data: viewModel.categoryList)
+        cell.categoryTapped = { [weak self] category in
+            self?.viewModel.filterMoviesByCategory(category: category)
         }
+        print(viewModel.filteredMovieList)
+        return cell
+    }
     
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        <#code#>
-//    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let controller = storyboard?.instantiateViewController(identifier: "\(MovieDetailVC.self)") as? MovieDetailVC
+        if viewModel.filteredMovieList.isEmpty {
+            controller?.movieDetail = viewModel.movieList[indexPath.item - 1]
+            navigationController?.show(controller ?? UIViewController(), sender: nil)
+        } else {
+            controller?.movieDetail = viewModel.filteredMovieList[indexPath.item - 1]
+            navigationController?.show(controller ?? UIViewController(), sender: nil)
+        }
+        
+    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-       if indexPath.item == 0 { // Segment Cell
+        if indexPath.item == 0 { // Segment Cell
             return CGSize(width: 393, height: 50)
-            } else { // Movie Cells
+        } else { // Movie Cells
             return CGSize(width: 100, height: 145)
         }
     }
@@ -81,6 +96,7 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
         header.configure(data: viewModel.movieList)
         header.movieTapped = { [weak self] movie in
             let controller = self?.storyboard?.instantiateViewController(identifier: "\(MovieDetailVC.self)") as? MovieDetailVC
+            controller?.movieDetail = movie
             self?.navigationController?.show(controller ?? UIViewController(), sender: nil)
         }
         

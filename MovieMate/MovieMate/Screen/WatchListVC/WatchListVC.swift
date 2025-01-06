@@ -24,6 +24,9 @@ class WatchListVC: UIViewController {
         table.delegate = self
         table.dataSource = self
         
+        navigationItem.title = "Watch List"
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        
         table.register(UINib(nibName: "WatchListCell", bundle: nil), forCellReuseIdentifier: "WatchListCell")
     }
     

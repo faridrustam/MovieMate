@@ -26,20 +26,17 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dEn-3Z-pd4">
                         <rect key="frame" x="6" y="44" width="78" height="2"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="78" id="1UK-yb-bPe"/>
-                            <constraint firstAttribute="height" constant="2" id="7tw-3P-KJ8"/>
-                        </constraints>
                     </view>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstItem="dEn-3Z-pd4" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="6" id="23p-6T-d98"/>
                 <constraint firstItem="UZ3-kR-OcR" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="3vQ-3Z-sj6"/>
-                <constraint firstAttribute="bottom" secondItem="dEn-3Z-pd4" secondAttribute="bottom" constant="4" id="623-JS-aNg"/>
                 <constraint firstItem="UZ3-kR-OcR" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="Dhr-bA-vJl"/>
-                <constraint firstAttribute="trailing" secondItem="dEn-3Z-pd4" secondAttribute="trailing" constant="6" id="e9H-Pv-12v"/>
+                <constraint firstItem="dEn-3Z-pd4" firstAttribute="height" secondItem="UZ3-kR-OcR" secondAttribute="height" multiplier="0.0967742" id="X3G-6e-XSp"/>
+                <constraint firstItem="dEn-3Z-pd4" firstAttribute="top" secondItem="UZ3-kR-OcR" secondAttribute="bottom" constant="8.6666666666666643" id="dSe-FY-btM"/>
+                <constraint firstItem="dEn-3Z-pd4" firstAttribute="width" secondItem="UZ3-kR-OcR" secondAttribute="width" multiplier="1.00862" id="ehP-SP-aqN"/>
+                <constraint firstItem="dEn-3Z-pd4" firstAttribute="centerX" secondItem="UZ3-kR-OcR" secondAttribute="centerX" id="uOy-5O-dke"/>
             </constraints>
             <size key="customSize" width="81" height="50"/>
             <connections>

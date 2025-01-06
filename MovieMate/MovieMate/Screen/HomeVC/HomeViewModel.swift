@@ -35,8 +35,8 @@ class HomeViewModel {
         }
     }
     
-    func filterMoviesByCategory(category: MovieModel) {
-        filteredMovieList = movieList.filter { $0.categoryId == category.categoryId }
+    func filterMoviesByCategory(category: CategoryModel) {
+        filteredMovieList = movieList.filter { $0.categoryId == category.id }
         callBack?()
         }
 }

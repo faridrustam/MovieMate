@@ -17,7 +17,7 @@ class CategoryCell: UICollectionViewCell {
         categoryLabel.textColor = .white
     }
 
-    func callElement(category: String, isSelected: Bool = false) {
+    func callElement(category: String, isSelected: Bool = true) {
         categoryLabel.text = category
         
         if isSelected {

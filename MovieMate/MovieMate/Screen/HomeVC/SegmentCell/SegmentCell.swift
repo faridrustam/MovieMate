@@ -9,9 +9,10 @@ import UIKit
 
 class SegmentCell: UICollectionViewCell {
 
-    @IBOutlet weak var collection: UICollectionView!
+    @IBOutlet weak private var collection: UICollectionView!
     
     var category: [CategoryModel] = []
+    var categoryTapped: ((CategoryModel) -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -43,8 +44,14 @@ extension SegmentCell: UICollectionViewDataSource, UICollectionViewDelegate, UIC
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedCategory = category[indexPath.item]
+        
+        categoryTapped?(selectedCategory)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        .init(width: 90, height: collectionView.frame.height)
+        .init(width: 80, height: collectionView.frame.height)
     }
     
     
