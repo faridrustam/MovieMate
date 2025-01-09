@@ -24,7 +24,7 @@ class WatchListCoreData {
     func saveWatchList(movieModel: MovieModel) {
         let model = WatchList(context: context)
         
-        model.categoryId = movieModel.category?.categoryName
+        model.categoryId = movieModel.category
         model.movieName = movieModel.movieName
         model.posterImage = movieModel.posterImage
         model.bacgroundImage = movieModel.backgroundImage
@@ -35,7 +35,6 @@ class WatchListCoreData {
         
         do {
             try context.save()
-            userDefaultsManager.setValue(value: true, key: .movieSaved)
         } catch {
             print(error.localizedDescription)
         }

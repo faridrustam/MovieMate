@@ -36,7 +36,7 @@ class HomeViewModel {
     }
     
     func filterMoviesByCategory(category: CategoryModel) {
-        filteredMovieList = movieList.filter { $0.category?.categoryName == category.categoryName }
+        filteredMovieList = movieList.filter { $0.category == category.categoryName }
         callBack?()
         }
 }

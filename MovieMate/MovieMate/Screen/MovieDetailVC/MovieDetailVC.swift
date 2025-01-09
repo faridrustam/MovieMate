@@ -8,13 +8,14 @@
 import UIKit
 
 class MovieDetailVC: UIViewController {
-
+    
     @IBOutlet private var backgroundView: UIView!
     @IBOutlet weak private var collection: UICollectionView!
     
     var movieDetail: MovieModel?
     var categorySelected: String?
-    var movies: [MovieModel]?
+    let dataManager = WatchListCoreData()
+    var success: (() -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +27,7 @@ class MovieDetailVC: UIViewController {
         collection.dataSource = self
         navigationItem.title = "Detail"
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-
+        
         backgroundView.backgroundColor = UIColor(named: "BackgroundColor")
         collection.backgroundColor = UIColor(named: "BackgroundColor")
         
@@ -39,12 +40,23 @@ class MovieDetailVC: UIViewController {
                             forCellWithReuseIdentifier: "DetailCategoryCell")
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "bookmark"),
-                                                            style: .plain, target: nil, action: #selector (bookmarkButtonTapped))
-
+                                                            style: .plain,
+                                                            target: self,
+                                                            action: #selector(bookmarkButtonTapped))
+        
     }
     
     @objc func bookmarkButtonTapped() {
-        
+        dataManager.saveWatchList(movieModel: movieDetail!)
+        if let currentImage = navigationItem.rightBarButtonItem?.image {
+            if currentImage == UIImage(systemName: "bookmark") {
+                navigationItem.rightBarButtonItem?.image = UIImage(systemName: "bookmark.fill")
+            } else {
+                navigationItem.rightBarButtonItem?.image = UIImage(systemName: "bookmark")
+            }
+            //success?()
+            NotificationCenter.default.post(name: Notification.Name("WatchListUpdated"), object: nil)
+        }
     }
 }
 
@@ -84,13 +96,6 @@ extension MovieDetailVC: UICollectionViewDataSource, UICollectionViewDelegate, U
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if indexPath.item == 0 {
-            return .init(width: collectionView.frame.width, height: 50)
-        }
-        return .init(width: collectionView.frame.width, height: 300)
-    }
-    
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "MovieDetailReusableView", for: indexPath) as! MovieDetailReusableView
         header.setMovieDetail(background: movieDetail?.backgroundImage ?? "",
@@ -99,9 +104,16 @@ extension MovieDetailVC: UICollectionViewDataSource, UICollectionViewDelegate, U
                               releaseDate: movieDetail?.releaseDate ?? "",
                               rating: String(movieDetail?.rating ?? 0),
                               duration: movieDetail?.time ?? "",
-                              category: movieDetail?.categoryId ?? "")
+                              category: movieDetail?.category ?? "")
 
         return header
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if indexPath.item == 0 {
+            return .init(width: collectionView.frame.width, height: 50)
+        }
+        return .init(width: collectionView.frame.width, height: 300)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {

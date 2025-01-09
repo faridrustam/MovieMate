@@ -12,12 +12,15 @@ class WatchListVC: UIViewController {
     @IBOutlet var controllerView: UIView!
     @IBOutlet weak var table: UITableView!
     
-    var watchList: [MovieModel] = []
+    var watchList: [WatchList] = []
+    let dataManager = WatchListCoreData()
+    let movieDetailVC = MovieDetailVC()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-        getMovies()
+        fetchData()
     }
     
     func configureUI() {
@@ -25,20 +28,31 @@ class WatchListVC: UIViewController {
         table.dataSource = self
         
         navigationItem.title = "Watch List"
+        navigationController?.navigationBar.barTintColor = UIColor(named: "BackgroundColor")
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         
         table.register(UINib(nibName: "WatchListCell", bundle: nil), forCellReuseIdentifier: "WatchListCell")
     }
     
-    func getMovies() {
-        if let fileUrl = Bundle.main.url(forResource: "Movies", withExtension: "json") {
-            do {
-                let data = try Data(contentsOf: fileUrl)
-                watchList = try JSONDecoder().decode([MovieModel].self, from: data)
-            } catch {
-                print(error.localizedDescription)
-            }
+    @objc func updateWatchList() {
+        dataManager.fetchWatchList {
+            self.watchList = self.dataManager.watchList
+            self.table.reloadData()
         }
+    }
+    
+    func fetchData() {
+        dataManager.fetchWatchList {
+            self.watchList = self.dataManager.watchList
+            self.table.reloadData()
+        }
+        NotificationCenter.default.addObserver(self, selector: #selector(updateWatchList), name: Notification.Name("WatchListUpdated"), object: nil)
+//        movieDetailVC.success = {
+//            self.dataManager.fetchWatchList {
+//                self.watchList = self.dataManager.watchList
+//                self.table.reloadData()
+//            }
+//        }
     }
 }
 
@@ -52,7 +66,7 @@ extension WatchListVC: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "WatchListCell", for: indexPath) as! WatchListCell
         let data = watchList[indexPath.row]
         
-        cell.callElement(posterImage: data.posterImage ?? "", movie: data.movieName ?? "", rating: data.rating ?? 0, category: data.categoryId ?? "", year: data.releaseDate ?? "", duration: data.time ?? "")
+        cell.callElement(posterImage: data.posterImage ?? "", movie: data.movieName ?? "", rating: data.rating, category: data.categoryId ?? "", year: data.releaseDate ?? "", duration: data.time ?? "")
         
         return cell
     }

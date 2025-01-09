@@ -1,6 +1,6 @@
 [
   {
-    "categoryId": "1",
+    "category": "Action",
     "movieName": "The Dark Knight",
     "backgroundImage": "batmanBackground",
     "posterImage": "TheDarkKnightPoster",
@@ -11,7 +11,7 @@
     "trailer": "EXeTwQWrcwY"
   },
   {
-    "categoryId": "1",
+    "category": "Action",
     "movieName": "Mad Max: Fury Road",
     "backgroundImage": "madMaxBackground",
     "posterImage": "MadMaxPoster",
@@ -22,7 +22,7 @@
     "trailer": "hEJnMQG9ev8"
   },
   {
-    "categoryId": "1",
+    "category": "Action",
     "movieName": "Gladiator",
     "backgroundImage": "gladiatorBackground",
     "posterImage": "GladiatorPoster",
@@ -33,7 +33,7 @@
     "trailer": "owK1qxDselE"
   },
   {
-    "categoryId": "2",
+    "category": "Comedy",
     "movieName": "The Grand Budapest Hotel",
     "backgroundImage": "budapestHotelBackground",
     "posterImage": "GrandBudapestPoster",
@@ -44,7 +44,7 @@
     "trailer": "1Fg5iWmQjwk"
   },
   {
-    "categoryId": "2",
+    "category": "Comedy",
     "movieName": "Superbad",
     "backgroundImage": "superBadBackground",
     "posterImage": "SuperBadPoster",
@@ -55,7 +55,7 @@
     "trailer": "FqNTjs4b4"
   },
   {
-    "categoryId": "2",
+    "category": "Comedy",
     "movieName": "The Hangover",
     "backgroundImage": "theHangoverBackground",
     "posterImage": "HangoverPoster",
@@ -66,7 +66,7 @@
     "trailer": "tlize92ffnY&ab"
   },
   {
-    "categoryId": "3",
+    "category": "Drama",
     "movieName": "The Shawshank Redemption",
     "backgroundImage": "shawshankBackground",
     "posterImage": "ShawshankPoster",
@@ -77,7 +77,7 @@
     "trailer": "6hB3S9bIaco"
   },
   {
-    "categoryId": "3",
+    "category": "Drama",
     "movieName": "Forrest Gump",
     "backgroundImage": "forrestGumpBackground",
     "posterImage": "ForrestGumpPoster",
@@ -88,7 +88,7 @@
     "trailer": "bLvqoHBptjg"
   },
   {
-    "categoryId": "3",
+    "category": "Drama",
     "movieName": "A Beautiful Mind",
     "backgroundImage": "beautifulMindBackground",
     "posterImage": "BeautifulMindPoster",
@@ -99,7 +99,7 @@
     "trailer": "2xL2GrbWnzo"
   },
   {
-    "categoryId": "4",
+    "category": "Fantasy",
     "movieName": "The Lord of the Rings: The Return of the King",
     "backgroundImage": "lordOfTheRingsBackground",
     "posterImage": "LordOfRingsPoster",
@@ -110,7 +110,7 @@
     "trailer": "r5X-hFf6Bwo"
   },
   {
-    "categoryId": "4",
+    "category": "Fantasy",
     "movieName": "Harry Potter and the Philosopher's Stone",
     "backgroundImage": "harryPotterBackgroud",
     "posterImage": "HarryPotterPoster",
@@ -121,7 +121,7 @@
     "trailer": "VyHV0BRtdxo"
   },
   {
-    "categoryId": "4",
+    "category": "Fantasy",
     "movieName": "The Chronicles of Narnia",
     "backgroundImage": "narniaBackground",
     "posterImage": "NarniaPoster",
@@ -132,7 +132,7 @@
     "trailer": "4Z9n7L3D3g0"
   },
   {
-    "categoryId": "5",
+    "category": "Romance",
     "movieName": "The Notebook",
     "backgroundImage": "theNoteBookBackground",
     "posterImage": "TheNoteBookPoster",
@@ -143,7 +143,7 @@
     "trailer": "FC6biTjEyZw"
   },
   {
-    "categoryId": "5",
+    "category": "Romance",
     "movieName": "Pride and Prejudice",
     "backgroundImage": "prideAndPrejudiceBackground",
     "posterImage": "PrideAndPejudicePoster",
@@ -154,7 +154,7 @@
     "trailer": "1dYv5u6v55Y"
   },
   {
-    "categoryId": "5",
+    "category": "Romance",
     "movieName": "Titanic",
     "backgroundImage": "titanicBackground",
     "posterImage": "TitanicPoster",

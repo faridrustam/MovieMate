@@ -11,20 +11,20 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="" id="gTV-IL-0wX" customClass="SegmentCell" customModule="MovieMate" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="393" height="50"/>
+            <rect key="frame" x="0.0" y="0.0" width="397" height="50"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="393" height="50"/>
+                <rect key="frame" x="0.0" y="0.0" width="397" height="50"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="WJa-BL-M0c">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="50"/>
+                        <rect key="frame" x="-10" y="0.0" width="407" height="50"/>
                         <color key="backgroundColor" name="BackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="5" minimumInteritemSpacing="10" id="zVd-Rb-zob">
                             <size key="itemSize" width="128" height="128"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="30" maxY="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="25" maxY="0.0"/>
                         </collectionViewFlowLayout>
                     </collectionView>
                 </subviews>
@@ -34,13 +34,13 @@
                 <constraint firstItem="WJa-BL-M0c" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="36g-bS-PWb"/>
                 <constraint firstAttribute="trailing" secondItem="WJa-BL-M0c" secondAttribute="trailing" id="lLX-pR-Nae"/>
                 <constraint firstAttribute="bottom" secondItem="WJa-BL-M0c" secondAttribute="bottom" id="me6-NG-pbm"/>
-                <constraint firstItem="WJa-BL-M0c" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="nXE-T3-Wj6"/>
+                <constraint firstItem="WJa-BL-M0c" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="-10" id="nXE-T3-Wj6"/>
             </constraints>
-            <size key="customSize" width="405" height="50"/>
+            <size key="customSize" width="409" height="50"/>
             <connections>
                 <outlet property="collection" destination="WJa-BL-M0c" id="GSQ-dw-b2Q"/>
             </connections>
-            <point key="canvasLocation" x="203.0534351145038" y="19.718309859154932"/>
+            <point key="canvasLocation" x="199.23664122137404" y="19.718309859154932"/>
         </collectionViewCell>
     </objects>
     <resources>

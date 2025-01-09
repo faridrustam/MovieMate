@@ -13,6 +13,7 @@ class HomeVC: UIViewController {
     @IBOutlet weak private var collection: UICollectionView!
     
     let viewModel = HomeViewModel()
+    let dataManager = WatchListCoreData()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -104,6 +105,6 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        .init(width: collectionView.frame.width, height: 210)
+        .init(width: collectionView.frame.width, height: 250)
     }
 }

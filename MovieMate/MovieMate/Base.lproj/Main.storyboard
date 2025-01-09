@@ -188,7 +188,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="OkW-HO-U7e">
                                 <rect key="frame" x="0.0" y="103" width="393" height="666"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="20" id="jwg-8R-qU5">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="jwg-8R-qU5">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -200,10 +200,10 @@
                         <viewLayoutGuide key="safeArea" id="iep-me-5gV"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="OkW-HO-U7e" firstAttribute="trailing" secondItem="iep-me-5gV" secondAttribute="trailing" id="B7I-SG-FQ3"/>
-                            <constraint firstItem="OkW-HO-U7e" firstAttribute="bottom" secondItem="iep-me-5gV" secondAttribute="bottom" id="X4N-IF-Tbg"/>
-                            <constraint firstItem="OkW-HO-U7e" firstAttribute="top" secondItem="iep-me-5gV" secondAttribute="top" id="iMl-hk-KPl"/>
-                            <constraint firstItem="OkW-HO-U7e" firstAttribute="leading" secondItem="iep-me-5gV" secondAttribute="leading" id="lpN-R5-mbd"/>
+                            <constraint firstItem="OkW-HO-U7e" firstAttribute="top" secondItem="iep-me-5gV" secondAttribute="top" id="TzU-yq-bXX"/>
+                            <constraint firstItem="OkW-HO-U7e" firstAttribute="leading" secondItem="iep-me-5gV" secondAttribute="leading" id="Za0-po-meU"/>
+                            <constraint firstItem="OkW-HO-U7e" firstAttribute="trailing" secondItem="iep-me-5gV" secondAttribute="trailing" id="e9H-ZW-4Ra"/>
+                            <constraint firstItem="OkW-HO-U7e" firstAttribute="bottom" secondItem="iep-me-5gV" secondAttribute="bottom" id="qtX-nb-Ux5"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="tfy-7U-wcZ">

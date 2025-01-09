@@ -58,6 +58,6 @@ extension HeaderReusableView: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        .init(width: 145, height: 210)
+        .init(width: 145, height: 230)
     }
 }

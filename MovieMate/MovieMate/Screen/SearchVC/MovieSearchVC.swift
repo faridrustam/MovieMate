@@ -51,7 +51,7 @@ class MovieSearchVC: UIViewController {
     func filterSearch() {
         filteredMovies = movies.filter {
             ($0.movieName?.lowercased().contains(searchTextField.text?.lowercased() ?? "") ?? false) ||
-            ($0.categoryId?.lowercased().contains(searchTextField.text?.lowercased() ?? "") ?? false)
+            ($0.category?.lowercased().contains(searchTextField.text?.lowercased() ?? "") ?? false)
         }
         collection.reloadData()
     }
