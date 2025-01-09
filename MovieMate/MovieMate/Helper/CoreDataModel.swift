@@ -24,10 +24,10 @@ class WatchListCoreData {
     func saveWatchList(movieModel: MovieModel) {
         let model = WatchList(context: context)
         
-        model.categoryId = movieModel.categoryId
+        model.categoryId = movieModel.category?.categoryName
         model.movieName = movieModel.movieName
         model.posterImage = movieModel.posterImage
-        model.bacgroundImage = movieModel.bacgroundImage
+        model.bacgroundImage = movieModel.backgroundImage
         model.aboutMovie = movieModel.aboutMovie
         model.rating = movieModel.rating ?? 0
         model.releaseDate = movieModel.releaseDate

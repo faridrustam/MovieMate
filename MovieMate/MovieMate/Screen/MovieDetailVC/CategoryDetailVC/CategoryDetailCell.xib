@@ -17,29 +17,29 @@
                 <rect key="frame" x="0.0" y="0.0" width="393" height="300"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mTu-ZB-VZl">
-                        <rect key="frame" x="24" y="24" width="345" height="20.666666666666671"/>
-                        <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="17"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Atb-5Q-ClR" customClass="YTPlayerView">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="245"/>
+                        <rect key="frame" x="0.0" y="8" width="393" height="245"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="393" id="pmf-nB-kwk"/>
                             <constraint firstAttribute="height" constant="245" id="tk8-uf-PrG"/>
                         </constraints>
                     </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mTu-ZB-VZl">
+                        <rect key="frame" x="24" y="8.0000000000000018" width="345" height="20.666666666666671"/>
+                        <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstItem="mTu-ZB-VZl" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="24" id="0hg-NV-LpA"/>
+                <constraint firstItem="mTu-ZB-VZl" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="0hg-NV-LpA"/>
                 <constraint firstAttribute="trailing" secondItem="Atb-5Q-ClR" secondAttribute="trailing" id="13n-lV-lF4"/>
                 <constraint firstAttribute="trailing" secondItem="mTu-ZB-VZl" secondAttribute="trailing" constant="24" id="9Ji-uB-RTa"/>
                 <constraint firstItem="Atb-5Q-ClR" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="RLr-qI-A1Q"/>
-                <constraint firstAttribute="bottom" secondItem="Atb-5Q-ClR" secondAttribute="bottom" constant="55" id="jI9-Vb-bN4"/>
+                <constraint firstItem="Atb-5Q-ClR" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="Wf0-6h-myE"/>
                 <constraint firstItem="mTu-ZB-VZl" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="24" id="sAV-Ln-33z"/>
             </constraints>
             <size key="customSize" width="296" height="233"/>

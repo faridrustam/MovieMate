@@ -12,9 +12,9 @@ struct CategoryModel: Codable {
 }
 
 struct MovieModel: Codable {
-    let categoryId: String?
+    let category: CategoryModel?
     let movieName: String?
-    let bacgroundImage: String?
+    let backgroundImage: String?
     let posterImage: String?
     let rating: Double?
     let releaseDate: String?

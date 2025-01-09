@@ -2,7 +2,7 @@
   {
     "categoryId": "1",
     "movieName": "The Dark Knight",
-    "bacgroundImage": "batmanBackground",
+    "backgroundImage": "batmanBackground",
     "posterImage": "TheDarkKnightPoster",
     "rating": 9.0,
     "releaseDate": "2008",
@@ -13,7 +13,7 @@
   {
     "categoryId": "1",
     "movieName": "Mad Max: Fury Road",
-    "bacgroundImage": "madMaxBackground",
+    "backgroundImage": "madMaxBackground",
     "posterImage": "MadMaxPoster",
     "rating": 8.1,
     "releaseDate": "2015",
@@ -24,7 +24,7 @@
   {
     "categoryId": "1",
     "movieName": "Gladiator",
-    "bacgroundImage": "gladiatorBackground",
+    "backgroundImage": "gladiatorBackground",
     "posterImage": "GladiatorPoster",
     "rating": 8.5,
     "releaseDate": "2000",
@@ -35,7 +35,7 @@
   {
     "categoryId": "2",
     "movieName": "The Grand Budapest Hotel",
-    "bacgroundImage": "budapestHotelBackground",
+    "backgroundImage": "budapestHotelBackground",
     "posterImage": "GrandBudapestPoster",
     "rating": 8.1,
     "releaseDate": "2014",
@@ -46,7 +46,7 @@
   {
     "categoryId": "2",
     "movieName": "Superbad",
-    "bacgroundImage": "superBadBackground",
+    "backgroundImage": "superBadBackground",
     "posterImage": "SuperBadPoster",
     "rating": 7.6,
     "releaseDate": "2007",
@@ -57,7 +57,7 @@
   {
     "categoryId": "2",
     "movieName": "The Hangover",
-    "bacgroundImage": "theHangoverBackground",
+    "backgroundImage": "theHangoverBackground",
     "posterImage": "HangoverPoster",
     "rating": 7.7,
     "releaseDate": "2009",
@@ -68,7 +68,7 @@
   {
     "categoryId": "3",
     "movieName": "The Shawshank Redemption",
-    "bacgroundImage": "shawshankBackground",
+    "backgroundImage": "shawshankBackground",
     "posterImage": "ShawshankPoster",
     "rating": 9.3,
     "releaseDate": "1994",
@@ -79,7 +79,7 @@
   {
     "categoryId": "3",
     "movieName": "Forrest Gump",
-    "bacgroundImage": "forrestGumpBackground",
+    "backgroundImage": "forrestGumpBackground",
     "posterImage": "ForrestGumpPoster",
     "rating": 8.8,
     "releaseDate": "1994",
@@ -90,7 +90,7 @@
   {
     "categoryId": "3",
     "movieName": "A Beautiful Mind",
-    "bacgroundImage": "beautifulMindBackground",
+    "backgroundImage": "beautifulMindBackground",
     "posterImage": "BeautifulMindPoster",
     "rating": 8.2,
     "releaseDate": "2001",
@@ -101,7 +101,7 @@
   {
     "categoryId": "4",
     "movieName": "The Lord of the Rings: The Return of the King",
-    "bacgroundImage": "lordOfTheRingsBackground",
+    "backgroundImage": "lordOfTheRingsBackground",
     "posterImage": "LordOfRingsPoster",
     "rating": 9.0,
     "releaseDate": "2003",
@@ -112,7 +112,7 @@
   {
     "categoryId": "4",
     "movieName": "Harry Potter and the Philosopher's Stone",
-    "bacgroundImage": "harryPotterBackgroud",
+    "backgroundImage": "harryPotterBackgroud",
     "posterImage": "HarryPotterPoster",
     "rating": 7.6,
     "releaseDate": "2001",
@@ -123,7 +123,7 @@
   {
     "categoryId": "4",
     "movieName": "The Chronicles of Narnia",
-    "bacgroundImage": "narniaBackground",
+    "backgroundImage": "narniaBackground",
     "posterImage": "NarniaPoster",
     "rating": 6.9,
     "releaseDate": "2005",
@@ -134,7 +134,7 @@
   {
     "categoryId": "5",
     "movieName": "The Notebook",
-    "bacgroundImage": "theNoteBookBackground",
+    "backgroundImage": "theNoteBookBackground",
     "posterImage": "TheNoteBookPoster",
     "rating": 7.8,
     "releaseDate": "2004",
@@ -145,7 +145,7 @@
   {
     "categoryId": "5",
     "movieName": "Pride and Prejudice",
-    "bacgroundImage": "prideAndPrejudiceBackground",
+    "backgroundImage": "prideAndPrejudiceBackground",
     "posterImage": "PrideAndPejudicePoster",
     "rating": 7.8,
     "releaseDate": "2005",
@@ -156,7 +156,7 @@
   {
     "categoryId": "5",
     "movieName": "Titanic",
-    "bacgroundImage": "titanicBackground",
+    "backgroundImage": "titanicBackground",
     "posterImage": "TitanicPoster",
     "rating": 7.9,
     "releaseDate": "1997",

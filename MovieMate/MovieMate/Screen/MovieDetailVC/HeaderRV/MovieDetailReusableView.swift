@@ -9,10 +9,14 @@ import UIKit
 
 class MovieDetailReusableView: UICollectionReusableView {
 
-    @IBOutlet weak private var collection: UICollectionView!
-    
-    let detailCategory = ["About Movie", "Watch Trailer"]
-    var categorytapped: ((String) -> Void)?
+    @IBOutlet weak private var backgroundImage: UIImageView!
+    @IBOutlet weak private var posterImage: UIImageView!
+    @IBOutlet weak private var movieNameLabel: UILabel!
+    @IBOutlet weak private var yearLabel: UILabel!
+    @IBOutlet weak private var durationLabel: UILabel!
+    @IBOutlet weak private var categoryLabel: UILabel!
+    @IBOutlet weak private var ratingLabel: UILabel!
+    @IBOutlet weak private var ratingBackgroundView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -20,32 +24,19 @@ class MovieDetailReusableView: UICollectionReusableView {
     }
     
     func configureUI() {
-        collection.delegate = self
-        collection.dataSource = self
-        collection.backgroundColor = UIColor(named: "BackgroundColor")
-        collection.register(UINib(nibName: "\(CategoryCell.self)", bundle: nil), forCellWithReuseIdentifier: "\(CategoryCell.self)")
-    }
-}
-
-extension MovieDetailReusableView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        detailCategory.count
+        ratingBackgroundView.layer.cornerRadius = ratingBackgroundView.frame.height / 6
+        ratingBackgroundView.layer.masksToBounds = true
+        posterImage.layer.cornerRadius = posterImage.frame.height / 6
+        posterImage.layer.masksToBounds = true
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CategoryCell.self)", for: indexPath) as! CategoryCell
-        cell.callElement(category: detailCategory[indexPath.item])
-        
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selectedCategory = detailCategory[indexPath.item]
-        categorytapped?(selectedCategory)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        .init(width: 130, height: collectionView.frame.height)
+    func setMovieDetail(background: String, poster: String, movieName: String, releaseDate: String, rating: String, duration: String, category: String) {
+        backgroundImage.image = UIImage(named: background)
+        posterImage.image = UIImage(named: poster)
+        movieNameLabel.text = movieName
+        yearLabel.text = releaseDate
+        ratingLabel.text = rating
+        durationLabel.text = duration
+        categoryLabel.text = category
     }
 }
