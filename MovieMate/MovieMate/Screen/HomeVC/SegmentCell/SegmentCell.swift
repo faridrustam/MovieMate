@@ -51,7 +51,7 @@ extension SegmentCell: UICollectionViewDataSource, UICollectionViewDelegate, UIC
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        .init(width: 80, height: collectionView.frame.height)
+        .init(width: 90, height: collectionView.frame.height)
     }
     
     

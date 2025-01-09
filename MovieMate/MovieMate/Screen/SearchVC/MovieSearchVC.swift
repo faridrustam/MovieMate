@@ -34,7 +34,6 @@ class MovieSearchVC: UIViewController {
         collection.delegate = self
         collection.dataSource = self
         collection.register(UINib(nibName: "MovieCell", bundle: nil), forCellWithReuseIdentifier: "MovieCell")
-        
         searchTextField.addTarget(self, action: #selector(searchTextChanged), for: .editingChanged)
     }
     

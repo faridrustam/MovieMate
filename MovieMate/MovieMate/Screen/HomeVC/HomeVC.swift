@@ -26,6 +26,7 @@ class HomeVC: UIViewController {
         collection.delegate = self
         collection.dataSource = self
         
+        navigationController?.navigationBar.barTintColor = UIColor(named: "BackgroundColor")
         collection.backgroundColor = UIColor(named: "BackgroundColor")
         controllerView.backgroundColor = UIColor(named: "BackgroundColor")
         
@@ -67,7 +68,6 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
         cell.categoryTapped = { [weak self] category in
             self?.viewModel.filterMoviesByCategory(category: category)
         }
-        print(viewModel.filteredMovieList)
         return cell
     }
     
@@ -104,6 +104,6 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        .init(width: collectionView.frame.width, height: 250)
+        .init(width: collectionView.frame.width, height: 210)
     }
 }

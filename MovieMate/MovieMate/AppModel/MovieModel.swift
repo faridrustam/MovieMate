@@ -19,6 +19,6 @@ struct MovieModel: Codable {
     let rating: Double?
     let releaseDate: String?
     let time: String?
-    let description: String?
+    let aboutMovie: String?
     let trailer: String?
 }

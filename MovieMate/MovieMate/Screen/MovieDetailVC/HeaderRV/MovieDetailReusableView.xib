@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="MovieDetailReusableView" reuseIdentifier="MovieDetailReusableView" id="U6b-Vx-4bR" customClass="MovieDetailReusableView" customModule="MovieMate" customModuleProvider="target">
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="" id="U6b-Vx-4bR" customClass="MovieDetailReusableView" customModule="MovieMate" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
@@ -35,7 +35,7 @@
             <connections>
                 <outlet property="collection" destination="HXR-QR-8xU" id="2QG-G8-2QN"/>
             </connections>
-            <point key="canvasLocation" x="138.93129770992365" y="19.718309859154932"/>
+            <point key="canvasLocation" x="303.81679389312978" y="13.380281690140846"/>
         </collectionReusableView>
     </objects>
     <resources>

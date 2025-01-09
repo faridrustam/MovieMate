@@ -1,13 +1,13 @@
 //
-//  MovieDetailReusableView.swift
+//  DetailCategoryCell.swift
 //  MovieMate
 //
-//  Created by Farid Rustamov on 06.01.25.
+//  Created by Farid Rustamov on 09.01.25.
 //
 
 import UIKit
 
-class MovieDetailReusableView: UICollectionReusableView {
+class DetailCategoryCell: UICollectionViewCell {
 
     @IBOutlet weak private var collection: UICollectionView!
     
@@ -18,7 +18,7 @@ class MovieDetailReusableView: UICollectionReusableView {
         super.awakeFromNib()
         configureUI()
     }
-    
+
     func configureUI() {
         collection.delegate = self
         collection.dataSource = self
@@ -27,7 +27,7 @@ class MovieDetailReusableView: UICollectionReusableView {
     }
 }
 
-extension MovieDetailReusableView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension DetailCategoryCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         detailCategory.count
@@ -49,3 +49,4 @@ extension MovieDetailReusableView: UICollectionViewDelegate, UICollectionViewDat
         .init(width: 130, height: collectionView.frame.height)
     }
 }
+

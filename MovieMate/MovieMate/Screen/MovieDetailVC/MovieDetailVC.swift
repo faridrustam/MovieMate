@@ -21,7 +21,9 @@ class MovieDetailVC: UIViewController {
     @IBOutlet weak private var collection: UICollectionView!
     
     var movieDetail: MovieModel?
-    var movies: [MovieModel] = []
+    var categorySelected: String?
+    var movies: [MovieModel]?
+    var isImageToggled = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +51,12 @@ class MovieDetailVC: UIViewController {
         collection.register(UINib(nibName: "MovieCell", bundle: nil),
                             forCellWithReuseIdentifier: "MovieCell")
         
+        collection.register(UINib(nibName: "CategoryDetailCell", bundle: nil),
+                            forCellWithReuseIdentifier: "CategoryDetailCell")
+        
+        collection.register(UINib(nibName: "DetailCategoryCell", bundle: nil),
+                            forCellWithReuseIdentifier: "DetailCategoryCell")
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "bookmark"),
                                                             style: .plain, target: nil, action: #selector (bookmarkButtonTapped))
 
@@ -67,41 +75,58 @@ class MovieDetailVC: UIViewController {
     @objc func bookmarkButtonTapped() {
         
     }
-    
-    func configure(data: [MovieModel]) {
-        movies = data
-        collection.reloadData()
-    }
 }
 
 extension MovieDetailVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        movies.count
+        2
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(MovieCell.self)", for: indexPath) as! MovieCell
-        cell.callElement(movie: movies[indexPath.item].posterImage ?? "")
-        print(movies)
+        if indexPath.item == 0 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(DetailCategoryCell.self)", for: indexPath) as! DetailCategoryCell
+            cell.categorytapped = { category in
+                self.categorySelected = category
+                self.collection.reloadData()
+            }
+            
+            return cell
+        }
         
-        return cell
+        switch categorySelected  {
+        case "About Movie":
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CategoryDetailCell.self)", for: indexPath) as! CategoryDetailCell
+            cell.detailLabel(text: self.movieDetail?.aboutMovie ?? "")
+            
+            return cell
+        case "Watch Trailer":
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CategoryDetailCell.self)", for: indexPath) as! CategoryDetailCell
+            cell.loadVideo(videoID: movieDetail?.trailer ?? "")
+            
+            return cell
+        default:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CategoryDetailCell.self)", for: indexPath) as! CategoryDetailCell
+            cell.detailLabel(text: self.movieDetail?.aboutMovie ?? "")
+            
+            return cell
+        }
     }
     
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        <#code#>
-//    }
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        .init(width: collectionView.frame.width, height: 300)
+        if indexPath.item == 0 {
+            return .init(width: collectionView.frame.width, height: 50)
+        }
+        return .init(width: collectionView.frame.width, height: collectionView.frame.height)
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "MovieDetailReusableView", for: indexPath) as! MovieDetailReusableView
-        header.categorytapped = { [weak self] category in
-                // kateqoriyalara uyğun cell-lər gələcək
+        header.categorytapped = { category in
+            self.categorySelected = category
+            self.collection.reloadData()
         }
-        
+
         return header
     }
     

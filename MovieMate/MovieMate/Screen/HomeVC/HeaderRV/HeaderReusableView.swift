@@ -12,6 +12,7 @@ class HeaderReusableView: UICollectionReusableView {
     @IBOutlet weak var collection: UICollectionView!
 
     var movies: [MovieModel] = []
+    var filteredRating: [MovieModel] = []
     var movieTapped: ((MovieModel) -> Void)?
     
     override func awakeFromNib() {
@@ -27,21 +28,27 @@ class HeaderReusableView: UICollectionReusableView {
         collection.register(UINib(nibName: "\(MovieCell.self)", bundle: nil), forCellWithReuseIdentifier: "\(MovieCell.self)")
     }
     
+    func filterRating() {
+        filteredRating = movies.filter {
+            ($0.rating ?? 0) >= Double(8.0)
+        }
+    }
+    
     func configure(data: [MovieModel]) {
         movies = data
+        filterRating()
         collection.reloadData()
     }
 }
 
 extension HeaderReusableView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        movies.count
+        filteredRating.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCell", for: indexPath) as! MovieCell
-            cell.callElement(movie: movies[indexPath.item].posterImage ?? "")
-        
+        cell.callElement(movie: filteredRating[indexPath.item].posterImage ?? "")
         return cell
     }
     
