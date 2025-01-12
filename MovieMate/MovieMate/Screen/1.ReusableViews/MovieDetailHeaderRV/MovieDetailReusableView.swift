@@ -24,6 +24,7 @@ class MovieDetailReusableView: UICollectionReusableView {
     }
     
     func configureUI() {
+        movieNameLabel.numberOfLines = 0
         ratingBackgroundView.layer.cornerRadius = ratingBackgroundView.frame.height / 6
         ratingBackgroundView.layer.masksToBounds = true
         posterImage.layer.cornerRadius = posterImage.frame.height / 6

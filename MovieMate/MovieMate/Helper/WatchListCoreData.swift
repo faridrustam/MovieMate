@@ -40,4 +40,13 @@ class WatchListCoreData {
         }
     }
     
+    func deleteWatchList(movie: WatchList, completion: (() -> Void)?) {
+        context.delete(movie)
+        do {
+            try context.save()
+            completion?()
+        } catch {
+            print("Failed to delete movie: \(error)")
+        }
+    }
 }

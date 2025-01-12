@@ -9,14 +9,14 @@ import Foundation
 
 class UserDefaultsManager {
     enum Keys: String, CaseIterable {
-        case movieSaved = "movieSaved"
+        case categoryTapped = "categoryTapped"
     }
     
     func setValue(value: Any, key: Keys) {
         UserDefaults.standard.setValue(value, forKey: key.rawValue)
     }
     
-    func getValue(key: Keys = .movieSaved) -> Bool {
+    func getValue(key: Keys = .categoryTapped) -> Bool {
         UserDefaults.standard.bool(forKey: key.rawValue)
     }
 }

@@ -109,7 +109,7 @@
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A Beautiful Mind" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RkP-i2-264">
-                    <rect key="frame" x="131" y="237" width="250" height="21"/>
+                    <rect key="frame" x="131" y="237" width="250" height="20.666666666666686"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="250" id="QQk-el-azK"/>
                     </constraints>
@@ -185,7 +185,6 @@
                 <constraint firstItem="RkP-i2-264" firstAttribute="top" secondItem="xGZ-uk-DGD" secondAttribute="bottom" constant="16" id="jz7-Ua-Rya"/>
                 <constraint firstItem="sLe-h5-LTJ" firstAttribute="top" secondItem="xGZ-uk-DGD" secondAttribute="bottom" constant="-68.333333333333314" id="l8V-Ru-RFR"/>
                 <constraint firstItem="w9c-PG-LVc" firstAttribute="height" secondItem="U6b-Vx-4bR" secondAttribute="height" multiplier="0.0847619" id="lO2-Dx-h6D"/>
-                <constraint firstItem="HNB-mG-jID" firstAttribute="height" secondItem="RkP-i2-264" secondAttribute="height" multiplier="1.45161" id="nsK-WV-L0I"/>
                 <constraint firstItem="f9a-1x-kob" firstAttribute="width" secondItem="U6b-Vx-4bR" secondAttribute="width" multiplier="0.333333" id="pts-3o-rl6"/>
                 <constraint firstItem="HNB-mG-jID" firstAttribute="width" secondItem="RkP-i2-264" secondAttribute="width" multiplier="0.28" id="rA1-be-kXq"/>
                 <constraint firstItem="f9a-1x-kob" firstAttribute="bottom" secondItem="U6b-Vx-4bR" secondAttribute="bottom" constant="-16" id="roG-TP-UOj"/>

@@ -39,20 +39,20 @@ extension SegmentCell: UICollectionViewDataSource, UICollectionViewDelegate, UIC
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCell", for: indexPath) as! CategoryCell
-        cell.callElement(category: category[indexPath.item].categoryName ?? "")
         
+        cell.configure(data: category[indexPath.item])
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selectedCategory = category[indexPath.item]
-        
-        categoryTapped?(selectedCategory)
+        for (index, _) in category.enumerated() {
+            category[index].isSelected = (index == indexPath.item)
+        }
+        collection.reloadData()
+        categoryTapped?(category[indexPath.item])
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         .init(width: 90, height: collectionView.frame.height)
     }
-    
-    
 }

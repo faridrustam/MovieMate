@@ -10,17 +10,17 @@ import UIKit
 class HomeVC: UIViewController {
     
     @IBOutlet private var controllerView: UIView!
-    @IBOutlet weak private var collection: UICollectionView!
+    @IBOutlet private weak var collection: UICollectionView!
     
     let viewModel = HomeViewModel()
     let dataManager = WatchListCoreData()
+    var isSegmentCellConfigured = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureUI()
-        viewModel.getMovieList()
-        viewModel.getCategoryList()
+        configureVieWModel()
     }
     
     func configureUI() {
@@ -38,6 +38,11 @@ class HomeVC: UIViewController {
                             withReuseIdentifier: "HeaderReusableView")
         collection.register(UINib(nibName: "SegmentCell", bundle: nil),
                             forCellWithReuseIdentifier: "SegmentCell")
+    }
+    
+    func configureVieWModel() {
+        viewModel.getMovieList()
+        viewModel.getCategoryList()
         
         viewModel.callBack = { [weak self] in
             self?.collection.reloadData()
@@ -65,7 +70,12 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
             return cell
         }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(SegmentCell.self)", for: indexPath) as! SegmentCell
-        cell.configure(data: viewModel.categoryList)
+
+        if !isSegmentCellConfigured {
+            cell.configure(data: viewModel.categoryList)
+            isSegmentCellConfigured = true
+        }
+        
         cell.categoryTapped = { [weak self] category in
             self?.viewModel.filterMoviesByCategory(category: category)
         }

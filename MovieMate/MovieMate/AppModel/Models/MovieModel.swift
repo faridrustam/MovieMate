@@ -9,6 +9,7 @@ import Foundation
 struct CategoryModel: Codable {
     let id: String?
     let categoryName: String?
+    var isSelected: Bool?
 }
 
 struct MovieModel: Codable {

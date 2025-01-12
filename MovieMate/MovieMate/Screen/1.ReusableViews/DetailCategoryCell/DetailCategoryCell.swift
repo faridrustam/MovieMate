@@ -11,7 +11,7 @@ class DetailCategoryCell: UICollectionViewCell {
 
     @IBOutlet weak private var collection: UICollectionView!
     
-    let detailCategory = ["About Movie", "Watch Trailer"]
+    var detailCategory: [MovieDetailCategory] = [.init(name: "About Movie", isSelected: true), .init(name: "Watch Trailer", isSelected: false)]
     var categorytapped: ((String) -> Void)?
     
     override func awakeFromNib() {
@@ -35,13 +35,19 @@ extension DetailCategoryCell: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CategoryCell.self)", for: indexPath) as! CategoryCell
-        cell.callElement(category: detailCategory[indexPath.item])
+
+        cell.callElement(category: detailCategory[indexPath.item].name ?? "", isSelected: detailCategory[indexPath.item].isSelected ?? false)
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selectedCategory = detailCategory[indexPath.item]
+        for (index, _) in detailCategory.enumerated() {
+            detailCategory[index].isSelected = (index == indexPath.item)
+        }
+        collectionView.reloadData()
+        
+        let selectedCategory = detailCategory[indexPath.item].name ?? ""
         categorytapped?(selectedCategory)
     }
     

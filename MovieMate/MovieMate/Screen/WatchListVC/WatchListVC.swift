@@ -30,15 +30,7 @@ class WatchListVC: UIViewController {
         navigationItem.title = "Watch List"
         navigationController?.navigationBar.barTintColor = UIColor(named: "BackgroundColor")
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        
         table.register(UINib(nibName: "WatchListCell", bundle: nil), forCellReuseIdentifier: "WatchListCell")
-    }
-    
-    @objc func updateWatchList() {
-        dataManager.fetchWatchList {
-            self.watchList = self.dataManager.watchList
-            self.table.reloadData()
-        }
     }
     
     func fetchData() {
@@ -47,12 +39,19 @@ class WatchListVC: UIViewController {
             self.table.reloadData()
         }
         NotificationCenter.default.addObserver(self, selector: #selector(updateWatchList), name: Notification.Name("WatchListUpdated"), object: nil)
-//        movieDetailVC.success = {
-//            self.dataManager.fetchWatchList {
-//                self.watchList = self.dataManager.watchList
-//                self.table.reloadData()
-//            }
-//        }
+        //        movieDetailVC.success = {
+        //            self.dataManager.fetchWatchList {
+        //                self.watchList = self.dataManager.watchList
+        //                self.table.reloadData()
+        //            }
+        //        }
+    }
+    
+    @objc func updateWatchList() {
+        dataManager.fetchWatchList {
+            self.watchList = self.dataManager.watchList
+            self.table.reloadData()
+        }
     }
 }
 
@@ -70,10 +69,19 @@ extension WatchListVC: UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        watchList.remove(at: indexPath.row)
-        tableView.deleteRows(at: [indexPath], with: .fade)
-        tableView.reloadData()
+
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title: "Watched") { (action, view, completionHandler) in
+            let movieToDelete = self.watchList[indexPath.row]
+            self.dataManager.deleteWatchList(movie: movieToDelete) {
+                self.watchList.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+                completionHandler(true)
+            }
+        }
+        
+        deleteAction.backgroundColor = .systemGreen
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+        return configuration
     }
 }

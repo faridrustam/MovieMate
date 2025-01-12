@@ -1,0 +1,27 @@
+[
+    {
+        "id": "1",
+        "categoryName": "Action",
+        "isSelected": false
+    },
+    {
+        "id": "2",
+        "categoryName": "Comedy",
+        "isSelected": false
+    },
+    {
+        "id": "3",
+        "categoryName": "Drama",
+        "isSelected": false
+    },
+    {
+        "id": "4",
+        "categoryName": "Fantasy",
+        "isSelected": false
+    },
+    {
+        "id": "5",
+        "categoryName": "Romance",
+        "isSelected": false
+    }
+]

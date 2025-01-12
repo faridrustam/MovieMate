@@ -18,12 +18,17 @@ class WatchListCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        poster.layer.cornerRadius = poster.frame.height / 4
-        poster.clipsToBounds = true
+        configureUI()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+    }
+    
+    func configureUI() {
+        movieName.numberOfLines = 0
+        poster.layer.cornerRadius = poster.frame.height / 6
+        poster.clipsToBounds = true
     }
     
     func callElement(posterImage: String, movie: String, rating: Double, category: String, year: String, duration: String) {
@@ -34,5 +39,4 @@ class WatchListCell: UITableViewCell {
         yearLabel.text = year
         durationLabel.text = duration
     }
-    
 }
