@@ -8,15 +8,12 @@
 import Foundation
 
 class UserDefaultsManager {
-    enum Keys: String, CaseIterable {
-        case categoryTapped = "categoryTapped"
-    }
     
-    func setValue(value: Any, key: Keys) {
-        UserDefaults.standard.setValue(value, forKey: key.rawValue)
+    func saveBookmarkState(movieName: String, isBookmarked: Bool) {
+        UserDefaults.standard.set(isBookmarked, forKey: "bookmark_\(movieName)")
     }
-    
-    func getValue(key: Keys = .categoryTapped) -> Bool {
-        UserDefaults.standard.bool(forKey: key.rawValue)
+
+    func getBookmarkState(movieName: String) -> Bool {
+        return UserDefaults.standard.bool(forKey: "bookmark_\(movieName)")
     }
 }

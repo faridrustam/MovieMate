@@ -8,15 +8,15 @@
 import UIKit
 
 class MovieDetailReusableView: UICollectionReusableView {
-
-    @IBOutlet weak private var backgroundImage: UIImageView!
-    @IBOutlet weak private var posterImage: UIImageView!
-    @IBOutlet weak private var movieNameLabel: UILabel!
-    @IBOutlet weak private var yearLabel: UILabel!
-    @IBOutlet weak private var durationLabel: UILabel!
-    @IBOutlet weak private var categoryLabel: UILabel!
-    @IBOutlet weak private var ratingLabel: UILabel!
-    @IBOutlet weak private var ratingBackgroundView: UIView!
+    
+    @IBOutlet private weak var backgroundImage: UIImageView!
+    @IBOutlet private weak var posterImage: UIImageView!
+    @IBOutlet private weak var movieNameLabel: UILabel!
+    @IBOutlet private weak var yearLabel: UILabel!
+    @IBOutlet private weak var durationLabel: UILabel!
+    @IBOutlet private weak var categoryLabel: UILabel!
+    @IBOutlet private weak var ratingLabel: UILabel!
+    @IBOutlet private weak var ratingBackgroundView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreData
 
 class WatchListCoreData {
     let context = AppDelegate().persistentContainer.viewContext
@@ -36,7 +37,7 @@ class WatchListCoreData {
         do {
             try context.save()
         } catch {
-            print(error.localizedDescription)
+            print("Failed to save movie: \(error.localizedDescription)")
         }
     }
     
@@ -46,7 +47,7 @@ class WatchListCoreData {
             try context.save()
             completion?()
         } catch {
-            print("Failed to delete movie: \(error)")
+            print("Failed to delete movie: \(error.localizedDescription)")
         }
     }
 }

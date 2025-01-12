@@ -8,30 +8,22 @@
 import Foundation
 
 class HomeViewModel {
+    let jsonManager = jsonFileManager()
     var movieList: [MovieModel] = []
     var categoryList: [CategoryModel] = []
     var filteredMovieList: [MovieModel] = []
+    var isSegmentCellConfigured = false
     var callBack: (() -> Void)?
     
-    func getMovieList() {
-        if let fileUrl = Bundle.main.url(forResource: "Movies", withExtension: "json") {
-            do {
-                let data = try Data(contentsOf: fileUrl)
-                movieList = try JSONDecoder().decode([MovieModel].self, from: data)
-            } catch {
-                print("Movie list error: \(error.localizedDescription)")
-            }
+    func getMovies() {
+        jsonManager.getMovieList { movies in
+            self.movieList = movies
         }
     }
     
-    func getCategoryList() {
-        if let fileUrl = Bundle.main.url(forResource: "Categories", withExtension: "json") {
-            do {
-                let data = try Data(contentsOf: fileUrl)
-                categoryList = try JSONDecoder().decode([CategoryModel].self, from: data)
-            } catch {
-                print("Category list error: \(error.localizedDescription)")
-            }
+    func getCategories() {
+        jsonManager.getCategoryList { categories in
+            self.categoryList = categories
         }
     }
     

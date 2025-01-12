@@ -9,18 +9,18 @@ import UIKit
 
 class WatchListVC: UIViewController {
     
-    @IBOutlet var controllerView: UIView!
-    @IBOutlet weak var table: UITableView!
+    @IBOutlet private var controllerView: UIView!
+    @IBOutlet private weak var table: UITableView!
     
-    var watchList: [WatchList] = []
     let dataManager = WatchListCoreData()
     let movieDetailVC = MovieDetailVC()
+    let viewModel = WatchListViewModel()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-        fetchData()
+        configureRefreshControl()
     }
     
     func configureUI() {
@@ -33,24 +33,21 @@ class WatchListVC: UIViewController {
         table.register(UINib(nibName: "WatchListCell", bundle: nil), forCellReuseIdentifier: "WatchListCell")
     }
     
-    func fetchData() {
-        dataManager.fetchWatchList {
-            self.watchList = self.dataManager.watchList
-            self.table.reloadData()
-        }
-        NotificationCenter.default.addObserver(self, selector: #selector(updateWatchList), name: Notification.Name("WatchListUpdated"), object: nil)
-        //        movieDetailVC.success = {
-        //            self.dataManager.fetchWatchList {
-        //                self.watchList = self.dataManager.watchList
-        //                self.table.reloadData()
-        //            }
-        //        }
+    func configureRefreshControl() {
+        table.refreshControl = UIRefreshControl()
+        table.refreshControl?.addTarget(self, action:
+                                            #selector(handleRefreshControl),
+                                        for: .valueChanged)
     }
     
-    @objc func updateWatchList() {
+    @objc func handleRefreshControl() {
         dataManager.fetchWatchList {
-            self.watchList = self.dataManager.watchList
+            self.viewModel.watchList = self.dataManager.watchList
             self.table.reloadData()
+        }
+        
+        DispatchQueue.main.async {
+            self.table.refreshControl?.endRefreshing()
         }
     }
 }
@@ -58,23 +55,23 @@ class WatchListVC: UIViewController {
 extension WatchListVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        watchList.count
+        viewModel.watchList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "WatchListCell", for: indexPath) as! WatchListCell
-        let data = watchList[indexPath.row]
+        let data = viewModel.watchList[indexPath.row]
         
         cell.callElement(posterImage: data.posterImage ?? "", movie: data.movieName ?? "", rating: data.rating, category: data.categoryId ?? "", year: data.releaseDate ?? "", duration: data.time ?? "")
         
         return cell
     }
-
+    
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .destructive, title: "Watched") { (action, view, completionHandler) in
-            let movieToDelete = self.watchList[indexPath.row]
+            let movieToDelete = self.viewModel.watchList[indexPath.row]
             self.dataManager.deleteWatchList(movie: movieToDelete) {
-                self.watchList.remove(at: indexPath.row)
+                self.viewModel.watchList.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .automatic)
                 completionHandler(true)
             }

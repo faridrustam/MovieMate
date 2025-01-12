@@ -8,8 +8,8 @@
 import UIKit
 
 class SegmentCell: UICollectionViewCell {
-
-    @IBOutlet weak private var collection: UICollectionView!
+    
+    @IBOutlet private weak var collection: UICollectionView!
     
     var category: [CategoryModel] = []
     var categoryTapped: ((CategoryModel) -> Void)?

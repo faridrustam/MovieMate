@@ -10,16 +10,16 @@ import UIKit
 class MovieDetailVC: UIViewController {
     
     @IBOutlet private var backgroundView: UIView!
-    @IBOutlet weak private var collection: UICollectionView!
+    @IBOutlet private weak var collection: UICollectionView!
     
-    var movieDetail: MovieModel?
-    var categorySelected: String?
+    let viewModel = MovieDetailViewModel()
     let dataManager = WatchListCoreData()
-    var success: (() -> Void)?
+    let userDefaultsManager = UserDefaultsManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        saveBookmark()
     }
     
     func configureUI() {
@@ -46,16 +46,28 @@ class MovieDetailVC: UIViewController {
         
     }
     
+    func saveBookmark() {
+        if let movieName = viewModel.movieDetail?.movieName {
+            let isBookmarked = userDefaultsManager.getBookmarkState(movieName: movieName)
+            let imageName = isBookmarked ? "bookmark.fill" : "bookmark"
+            navigationItem.rightBarButtonItem?.image = UIImage(systemName: imageName)
+        }
+    }
+    
     @objc func bookmarkButtonTapped() {
-        dataManager.saveWatchList(movieModel: movieDetail!)
-        if let currentImage = navigationItem.rightBarButtonItem?.image {
-            if currentImage == UIImage(systemName: "bookmark") {
-                navigationItem.rightBarButtonItem?.image = UIImage(systemName: "bookmark.fill")
-            } else {
-                navigationItem.rightBarButtonItem?.image = UIImage(systemName: "bookmark")
-            }
-            //success?()
-            NotificationCenter.default.post(name: Notification.Name("WatchListUpdated"), object: nil)
+        guard let movieDetail = viewModel.movieDetail else { return }
+        let isCurrentlyBookmarked = userDefaultsManager.getBookmarkState(movieName: movieDetail.movieName ?? "")
+        let newBookmarkState = !isCurrentlyBookmarked
+        
+        userDefaultsManager.saveBookmarkState(movieName: movieDetail.movieName ?? "", isBookmarked: newBookmarkState)
+        
+        let imageName = newBookmarkState ? "bookmark.fill" : "bookmark"
+        navigationItem.rightBarButtonItem?.image = UIImage(systemName: imageName)
+        
+        if newBookmarkState {
+            dataManager.saveWatchList(movieModel: movieDetail)
+        } else {
+            print("deleted")
         }
     }
 }
@@ -70,27 +82,27 @@ extension MovieDetailVC: UICollectionViewDataSource, UICollectionViewDelegate, U
         if indexPath.item == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(DetailCategoryCell.self)", for: indexPath) as! DetailCategoryCell
             cell.categorytapped = { category in
-                self.categorySelected = category
+                self.viewModel.categorySelected = category
                 self.collection.reloadData()
             }
             
             return cell
         }
         
-        switch categorySelected  {
+        switch viewModel.categorySelected  {
         case "About Movie":
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CategoryDetailCell.self)", for: indexPath) as! CategoryDetailCell
-            cell.detailLabel(text: self.movieDetail?.aboutMovie ?? "")
+            cell.detailLabel(text: self.viewModel.movieDetail?.aboutMovie ?? "")
             
             return cell
         case "Watch Trailer":
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CategoryDetailCell.self)", for: indexPath) as! CategoryDetailCell
-            cell.loadVideo(videoID: movieDetail?.trailer ?? "")
+            cell.loadVideo(videoID: viewModel.movieDetail?.trailer ?? "")
             
             return cell
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CategoryDetailCell.self)", for: indexPath) as! CategoryDetailCell
-            cell.detailLabel(text: self.movieDetail?.aboutMovie ?? "")
+            cell.detailLabel(text: self.viewModel.movieDetail?.aboutMovie ?? "")
             
             return cell
         }
@@ -98,14 +110,14 @@ extension MovieDetailVC: UICollectionViewDataSource, UICollectionViewDelegate, U
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "MovieDetailReusableView", for: indexPath) as! MovieDetailReusableView
-        header.setMovieDetail(background: movieDetail?.backgroundImage ?? "",
-                              poster: movieDetail?.posterImage ?? "",
-                              movieName: movieDetail?.movieName ?? "",
-                              releaseDate: movieDetail?.releaseDate ?? "",
-                              rating: String(movieDetail?.rating ?? 0),
-                              duration: movieDetail?.time ?? "",
-                              category: movieDetail?.category ?? "")
-
+        header.setMovieDetail(background: viewModel.movieDetail?.backgroundImage ?? "",
+                              poster: viewModel.movieDetail?.posterImage ?? "",
+                              movieName: viewModel.movieDetail?.movieName ?? "",
+                              releaseDate: viewModel.movieDetail?.releaseDate ?? "",
+                              rating: String(viewModel.movieDetail?.rating ?? 0),
+                              duration: viewModel.movieDetail?.time ?? "",
+                              category: viewModel.movieDetail?.category ?? "")
+        
         return header
     }
     

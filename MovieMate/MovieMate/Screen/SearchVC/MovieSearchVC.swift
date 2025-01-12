@@ -10,17 +10,16 @@ import UIKit
 class MovieSearchVC: UIViewController {
     
     @IBOutlet private var controllerView: UIView!
-    @IBOutlet weak private var backgroundSearch: UIView!
-    @IBOutlet weak private var searchTextField: UITextField!
-    @IBOutlet weak private var collection: UICollectionView!
+    @IBOutlet private weak var backgroundSearch: UIView!
+    @IBOutlet private weak var searchTextField: UITextField!
+    @IBOutlet private weak var collection: UICollectionView!
     
-    var movies: [MovieModel] = []
-    var filteredMovies: [MovieModel] = []
+    let viewModel = MovieSearchViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-        getMovies()
+        viewModel.getMovies()
     }
     
     func configureUI() {
@@ -38,32 +37,8 @@ class MovieSearchVC: UIViewController {
     }
     
     @objc func searchTextChanged() {
-        if let text = searchTextField.text {
-            if text.isEmpty {
-                filteredMovies = movies
-                collection.reloadData()
-            } else {
-                filterSearch()
-            }
-        }
-    }
-    
-    func filterSearch() {
-        filteredMovies = movies.filter {
-            ($0.movieName?.lowercased().contains(searchTextField.text?.lowercased() ?? "") ?? false) ||
-            ($0.category?.lowercased().contains(searchTextField.text?.lowercased() ?? "") ?? false)
-        }
-        collection.reloadData()
-    }
-    
-    func getMovies() {
-        if let fileUrl = Bundle.main.url(forResource: "Movies", withExtension: "json") {
-            do {
-                let data = try Data(contentsOf: fileUrl)
-                movies = try JSONDecoder().decode([MovieModel].self, from: data)
-            } catch {
-                print(error.localizedDescription)
-            }
+        viewModel.movieSearchChange(searchTextField: searchTextField.text ?? "") {
+            self.collection.reloadData()
         }
     }
 }
@@ -71,33 +46,36 @@ class MovieSearchVC: UIViewController {
 extension MovieSearchVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if filteredMovies.count > 0 {
-            return filteredMovies.count
+        if viewModel.filteredMovies.count > 0 {
+            return viewModel.filteredMovies.count
         } else {
-            return movies.count
+            return viewModel.movies.count
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(MovieCell.self)", for: indexPath) as! MovieCell
         
-        if filteredMovies.count > 0 {
-            cell.callElement(movie: filteredMovies[indexPath.item].posterImage ?? "")
+        if viewModel.filteredMovies.count > 0 {
+            cell.callElement(movie: viewModel.filteredMovies[indexPath.item].posterImage ?? "")
         } else {
-            cell.callElement(movie: movies[indexPath.item].posterImage ?? "")
+            cell.callElement(movie: viewModel.movies[indexPath.item].posterImage ?? "")
         }
         return cell
     }
     
-        func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-            let controller = storyboard?.instantiateViewController(withIdentifier: "\(MovieDetailVC.self)") as? MovieDetailVC
-            controller?.movieDetail = movies[indexPath.item]
-            
-            navigationController?.show(controller ?? UIViewController(), sender: nil)
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let controller = storyboard?.instantiateViewController(withIdentifier: "\(MovieDetailVC.self)") as? MovieDetailVC
+        if !viewModel.filteredMovies.isEmpty {
+            controller?.viewModel.movieDetail = viewModel.filteredMovies[indexPath.item]
+        } else {
+            controller?.viewModel.movieDetail = viewModel.movies[indexPath.item]
         }
+        
+        navigationController?.show(controller ?? UIViewController(), sender: nil)
+    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         .init(width: 180, height: 300)
     }
-    
 }

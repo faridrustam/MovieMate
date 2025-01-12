@@ -14,7 +14,6 @@ class HomeVC: UIViewController {
     
     let viewModel = HomeViewModel()
     let dataManager = WatchListCoreData()
-    var isSegmentCellConfigured = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,8 +40,8 @@ class HomeVC: UIViewController {
     }
     
     func configureVieWModel() {
-        viewModel.getMovieList()
-        viewModel.getCategoryList()
+        viewModel.getMovies()
+        viewModel.getCategories()
         
         viewModel.callBack = { [weak self] in
             self?.collection.reloadData()
@@ -63,17 +62,16 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.item != 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(MovieCell.self)", for: indexPath) as! MovieCell
-            let movieIndex = indexPath.item - 1
             let movieList = viewModel.filteredMovieList.isEmpty ? viewModel.movieList : viewModel.filteredMovieList
-            cell.callElement(movie: movieList[movieIndex].posterImage ?? "")
+            cell.callElement(movie: movieList[indexPath.item - 1].posterImage ?? "")
             
             return cell
         }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(SegmentCell.self)", for: indexPath) as! SegmentCell
-
-        if !isSegmentCellConfigured {
+        
+        if !viewModel.isSegmentCellConfigured {
             cell.configure(data: viewModel.categoryList)
-            isSegmentCellConfigured = true
+            viewModel.isSegmentCellConfigured = true
         }
         
         cell.categoryTapped = { [weak self] category in
@@ -85,10 +83,10 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let controller = storyboard?.instantiateViewController(identifier: "\(MovieDetailVC.self)") as? MovieDetailVC
         if viewModel.filteredMovieList.isEmpty {
-            controller?.movieDetail = viewModel.movieList[indexPath.item - 1]
+            controller?.viewModel.movieDetail = viewModel.movieList[indexPath.item - 1]
             navigationController?.show(controller ?? UIViewController(), sender: nil)
         } else {
-            controller?.movieDetail = viewModel.filteredMovieList[indexPath.item - 1]
+            controller?.viewModel.movieDetail = viewModel.filteredMovieList[indexPath.item - 1]
             navigationController?.show(controller ?? UIViewController(), sender: nil)
         }
         
@@ -107,7 +105,7 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
         header.configure(data: viewModel.movieList)
         header.movieTapped = { [weak self] movie in
             let controller = self?.storyboard?.instantiateViewController(identifier: "\(MovieDetailVC.self)") as? MovieDetailVC
-            controller?.movieDetail = movie
+            controller?.viewModel.movieDetail = movie
             self?.navigationController?.show(controller ?? UIViewController(), sender: nil)
         }
         

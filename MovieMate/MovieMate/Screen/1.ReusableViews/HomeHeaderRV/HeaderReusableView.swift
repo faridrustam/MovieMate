@@ -8,9 +8,9 @@
 import UIKit
 
 class HeaderReusableView: UICollectionReusableView {
-
-    @IBOutlet weak var collection: UICollectionView!
-
+    
+    @IBOutlet private weak var collection: UICollectionView!
+    
     var movies: [MovieModel] = []
     var filteredRating: [MovieModel] = []
     var movieTapped: ((MovieModel) -> Void)?

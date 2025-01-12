@@ -8,8 +8,8 @@
 import UIKit
 
 class DetailCategoryCell: UICollectionViewCell {
-
-    @IBOutlet weak private var collection: UICollectionView!
+    
+    @IBOutlet private weak var collection: UICollectionView!
     
     var detailCategory: [MovieDetailCategory] = [.init(name: "About Movie", isSelected: true), .init(name: "Watch Trailer", isSelected: false)]
     var categorytapped: ((String) -> Void)?
@@ -18,7 +18,7 @@ class DetailCategoryCell: UICollectionViewCell {
         super.awakeFromNib()
         configureUI()
     }
-
+    
     func configureUI() {
         collection.delegate = self
         collection.dataSource = self
@@ -35,7 +35,7 @@ extension DetailCategoryCell: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CategoryCell.self)", for: indexPath) as! CategoryCell
-
+        
         cell.callElement(category: detailCategory[indexPath.item].name ?? "", isSelected: detailCategory[indexPath.item].isSelected ?? false)
         
         return cell

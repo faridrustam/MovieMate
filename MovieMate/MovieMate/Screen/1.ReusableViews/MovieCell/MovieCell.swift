@@ -8,8 +8,8 @@
 import UIKit
 
 class MovieCell: UICollectionViewCell {
-
-    @IBOutlet weak private var moviePoster: UIImageView!
+    
+    @IBOutlet private weak var moviePoster: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -20,5 +20,5 @@ class MovieCell: UICollectionViewCell {
     func callElement(movie: String) {
         moviePoster.image = UIImage(named: movie)
     }
-
+    
 }

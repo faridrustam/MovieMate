@@ -9,10 +9,9 @@ import UIKit
 import YouTubeiOSPlayerHelper
 
 class CategoryDetailCell: UICollectionViewCell {
-
-    @IBOutlet weak private var movieDetailLabel: UILabel!
     
-    @IBOutlet weak var trailer: YTPlayerView!
+    @IBOutlet private weak var movieDetailLabel: UILabel!
+    @IBOutlet private weak var trailer: YTPlayerView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,5 +34,5 @@ class CategoryDetailCell: UICollectionViewCell {
         trailer.isHidden = false
         movieDetailLabel.isHidden = true
         trailer.load(withVideoId: videoID)
-        }
+    }
 }

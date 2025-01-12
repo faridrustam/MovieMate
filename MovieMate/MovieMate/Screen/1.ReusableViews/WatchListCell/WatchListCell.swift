@@ -9,12 +9,12 @@ import UIKit
 
 class WatchListCell: UITableViewCell {
     
-    @IBOutlet weak private var poster: UIImageView!
-    @IBOutlet weak private var movieName: UILabel!
-    @IBOutlet weak private var ratingLabel: UILabel!
-    @IBOutlet weak private var categoryLabel: UILabel!
-    @IBOutlet weak private var yearLabel: UILabel!
-    @IBOutlet weak private var durationLabel: UILabel!
+    @IBOutlet private weak var poster: UIImageView!
+    @IBOutlet private weak var movieName: UILabel!
+    @IBOutlet private weak var ratingLabel: UILabel!
+    @IBOutlet private weak var categoryLabel: UILabel!
+    @IBOutlet private weak var yearLabel: UILabel!
+    @IBOutlet private weak var durationLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
