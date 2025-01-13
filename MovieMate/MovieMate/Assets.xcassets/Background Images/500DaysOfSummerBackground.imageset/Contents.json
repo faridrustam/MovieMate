@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "500DaysOfSummerBackground.jpg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

@@ -35,9 +35,7 @@ class WatchListVC: UIViewController {
     
     func configureRefreshControl() {
         table.refreshControl = UIRefreshControl()
-        table.refreshControl?.addTarget(self, action:
-                                            #selector(handleRefreshControl),
-                                        for: .valueChanged)
+        table.refreshControl?.addTarget(self, action: #selector(handleRefreshControl), for: .valueChanged)
     }
     
     @objc func handleRefreshControl() {

@@ -1,5 +1,10 @@
 [
     {
+        "id": "0",
+        "categoryName": "All movies",
+        "isSelected": true
+    },
+    {
         "id": "1",
         "categoryName": "Action",
         "isSelected": false

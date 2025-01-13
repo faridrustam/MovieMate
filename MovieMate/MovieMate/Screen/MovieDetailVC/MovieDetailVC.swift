@@ -63,11 +63,17 @@ class MovieDetailVC: UIViewController {
         
         let imageName = newBookmarkState ? "bookmark.fill" : "bookmark"
         navigationItem.rightBarButtonItem?.image = UIImage(systemName: imageName)
-        
+        dataManager.fetchWatchList {
+            self.viewModel.movieSelected = self.dataManager.watchList
+        }
         if newBookmarkState {
             dataManager.saveWatchList(movieModel: movieDetail)
         } else {
-            print("deleted")
+            if let selectedMovie = viewModel.movieSelected.first(where: { $0.movieName == movieDetail.movieName }) {
+                dataManager.deleteWatchList(movie: selectedMovie, completion: nil)
+            } else {
+                print("Movie not found in the watchlist.")
+            }
         }
     }
 }

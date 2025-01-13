@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "MatrixPoster.jpg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

@@ -10,8 +10,8 @@ import Foundation
 class MovieDetailViewModel {
     var movieDetail: MovieModel?
     var categorySelected: String?
-    var movieSelected: WatchList?
+    var movieSelected = [WatchList]()
+    var savedMovies = [MovieModel]()
     let dataManager = WatchListCoreData()
     let userDefaultsManager = UserDefaultsManager()
-    
 }

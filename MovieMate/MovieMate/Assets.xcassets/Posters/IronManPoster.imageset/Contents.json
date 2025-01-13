@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "IronManPoster.jpg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

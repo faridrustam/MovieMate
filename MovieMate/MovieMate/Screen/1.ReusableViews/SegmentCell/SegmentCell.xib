@@ -18,7 +18,7 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="WJa-BL-M0c">
-                        <rect key="frame" x="-10" y="0.0" width="407" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="397" height="50"/>
                         <color key="backgroundColor" name="BackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="5" minimumInteritemSpacing="10" id="zVd-Rb-zob">
                             <size key="itemSize" width="128" height="128"/>
@@ -34,7 +34,7 @@
                 <constraint firstItem="WJa-BL-M0c" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="36g-bS-PWb"/>
                 <constraint firstAttribute="trailing" secondItem="WJa-BL-M0c" secondAttribute="trailing" id="lLX-pR-Nae"/>
                 <constraint firstAttribute="bottom" secondItem="WJa-BL-M0c" secondAttribute="bottom" id="me6-NG-pbm"/>
-                <constraint firstItem="WJa-BL-M0c" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="-10" id="nXE-T3-Wj6"/>
+                <constraint firstItem="WJa-BL-M0c" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="nXE-T3-Wj6"/>
             </constraints>
             <size key="customSize" width="409" height="50"/>
             <connections>
