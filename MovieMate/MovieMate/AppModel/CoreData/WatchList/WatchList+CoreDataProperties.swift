@@ -2,7 +2,7 @@
 //  WatchList+CoreDataProperties.swift
 //  MovieMate
 //
-//  Created by Farid Rustamov on 08.01.25.
+//  Created by Farid Rustamov on 14.01.25.
 //
 //
 
@@ -16,14 +16,15 @@ extension WatchList {
         return NSFetchRequest<WatchList>(entityName: "WatchList")
     }
 
+    @NSManaged public var aboutMovie: String?
+    @NSManaged public var bacgroundImage: String?
     @NSManaged public var categoryId: String?
     @NSManaged public var movieName: String?
     @NSManaged public var posterImage: String?
-    @NSManaged public var bacgroundImage: String?
     @NSManaged public var rating: Double
-    @NSManaged public var aboutMovie: String?
-    @NSManaged public var time: String?
     @NSManaged public var releaseDate: String?
+    @NSManaged public var time: String?
+    @NSManaged public var trailer: String?
 
 }
 

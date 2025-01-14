@@ -13,9 +13,8 @@ class WatchListVC: UIViewController {
     @IBOutlet private weak var table: UITableView!
     
     let dataManager = WatchListCoreData()
-    let movieDetailVC = MovieDetailVC()
     let viewModel = WatchListViewModel()
-    
+    let userDefaultsManager = UserDefaultsManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,12 +64,20 @@ extension WatchListVC: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let controller = storyboard?.instantiateViewController(identifier: "\(MovieDetailVC.self)") as! MovieDetailVC
+        let selectedWatchList = viewModel.watchList[indexPath.row]
+        controller.viewModel.movieDetail = selectedWatchList.toMovieModel()
+        navigationController?.show(controller, sender: nil)
+    }
+    
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .destructive, title: "Watched") { (action, view, completionHandler) in
-            let movieToDelete = self.viewModel.watchList[indexPath.row]
-            self.dataManager.deleteWatchList(movie: movieToDelete) {
+            self.dataManager.deleteWatchList(movie: self.viewModel.watchList[indexPath.row]) {
                 self.viewModel.watchList.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .automatic)
+                NotificationCenter.default.post(name: Notification.Name("movieDeleted"), object: nil)
+
                 completionHandler(true)
             }
         }
@@ -78,5 +85,21 @@ extension WatchListVC: UITableViewDelegate, UITableViewDataSource {
         deleteAction.backgroundColor = .systemGreen
         let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
         return configuration
+    }
+}
+
+extension WatchList {
+    func toMovieModel() -> MovieModel {
+        return MovieModel(
+            category: self.categoryId,
+            movieName: self.movieName,
+            backgroundImage: self.bacgroundImage,
+            posterImage: self.posterImage,
+            rating: self.rating,
+            releaseDate: self.releaseDate,
+            time: self.time,
+            aboutMovie: self.aboutMovie,
+            trailer: self.trailer
+        )
     }
 }

@@ -2,7 +2,7 @@
 //  WatchList+CoreDataClass.swift
 //  MovieMate
 //
-//  Created by Farid Rustamov on 08.01.25.
+//  Created by Farid Rustamov on 14.01.25.
 //
 //
 

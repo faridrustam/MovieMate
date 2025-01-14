@@ -9,11 +9,19 @@ import Foundation
 
 class UserDefaultsManager {
     
-    func saveBookmarkState(movieName: String, isBookmarked: Bool) {
-        UserDefaults.standard.set(isBookmarked, forKey: "bookmark_\(movieName)")
+    func setBookmarkState(movieName: String, isBookmarked: Bool) {
+        UserDefaults.standard.set(isBookmarked, forKey: "\(movieName)")
     }
 
     func getBookmarkState(movieName: String) -> Bool {
-        return UserDefaults.standard.bool(forKey: "bookmark_\(movieName)")
+        return UserDefaults.standard.bool(forKey: "\(movieName)")
+    }
+    
+    func setWatchListState(movieName: String, isWatchlisted: Bool) {
+        UserDefaults.standard.set(isWatchlisted, forKey: "\(movieName)")
+    }
+    
+    func getWatchListState(movieName: String) -> Bool {
+        return UserDefaults.standard.bool(forKey: "\(movieName)")
     }
 }

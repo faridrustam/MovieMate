@@ -33,6 +33,7 @@ class WatchListCoreData {
         model.rating = movieModel.rating ?? 0
         model.releaseDate = movieModel.releaseDate
         model.time = movieModel.time
+        model.trailer = movieModel.trailer
         
         do {
             try context.save()

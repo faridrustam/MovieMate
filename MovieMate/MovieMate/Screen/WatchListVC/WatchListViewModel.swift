@@ -18,4 +18,13 @@ class WatchListViewModel {
             completion?()
         }
     }
+    
+    func deleteMovie(index: Int, completion: (() -> Void)?) {
+        dataManager.deleteWatchList(movie: watchList[index]) {
+            self.watchList.remove(at: index)
+            completion?()
+        }
+    }
 }
+
+
