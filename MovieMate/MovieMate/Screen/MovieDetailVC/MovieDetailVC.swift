@@ -58,11 +58,14 @@ class MovieDetailVC: UIViewController {
         }
     }
     
-    @objc func handleMovieDeleted() {
-        userDefaultsManager.setBookmarkState(movieName: viewModel.movieDetail?.movieName ?? "", isBookmarked: false)
-        navigationItem.rightBarButtonItem?.image = UIImage(systemName: "bookmark")
+    @objc func handleMovieDeleted(_ notification: Notification) {
+        guard let userInfo = notification.userInfo, let deletedMovieName = userInfo["movieName"] as? String else { return }
+        if viewModel.movieDetail?.movieName == deletedMovieName {
+            userDefaultsManager.setBookmarkState(movieName: viewModel.movieDetail?.movieName ?? "", isBookmarked: false)
+            navigationItem.rightBarButtonItem?.image = UIImage(systemName: "bookmark")
+        }
     }
-
+    
     deinit {
         NotificationCenter.default.removeObserver(self, name: Notification.Name("movieDeleted"), object: nil)
     }

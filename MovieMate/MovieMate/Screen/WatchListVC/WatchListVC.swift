@@ -73,11 +73,13 @@ extension WatchListVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .destructive, title: "Watched") { (action, view, completionHandler) in
-            self.dataManager.deleteWatchList(movie: self.viewModel.watchList[indexPath.row]) {
+            let movieToDelete = self.viewModel.watchList[indexPath.row]
+            NotificationCenter.default.post(name: Notification.Name("movieDeleted"), object: nil, userInfo: ["movieName": movieToDelete.movieName ?? ""])
+            print("Deleted Movie Name: \(movieToDelete.movieName ?? "no movbir")")
+            self.dataManager.deleteWatchList(movie: movieToDelete) {
                 self.viewModel.watchList.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .automatic)
-                NotificationCenter.default.post(name: Notification.Name("movieDeleted"), object: nil)
-
+                
                 completionHandler(true)
             }
         }

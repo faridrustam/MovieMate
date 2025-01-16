@@ -20,8 +20,6 @@ class CategoryDetailCell: UICollectionViewCell {
     
     func configureUI() {
         movieDetailLabel.textColor = .white
-        movieDetailLabel.isHidden = true
-        trailer.isHidden = true
     }
     
     func detailLabel(text: String) {
