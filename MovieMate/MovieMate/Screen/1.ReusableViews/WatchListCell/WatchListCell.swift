@@ -18,6 +18,7 @@ class WatchListCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         configureUI()
     }
     

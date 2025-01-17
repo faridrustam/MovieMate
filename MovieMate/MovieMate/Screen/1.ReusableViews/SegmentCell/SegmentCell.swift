@@ -16,6 +16,7 @@ class SegmentCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         configureUI()
     }
     
@@ -39,8 +40,8 @@ extension SegmentCell: UICollectionViewDataSource, UICollectionViewDelegate, UIC
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCell", for: indexPath) as! CategoryCell
-        
         cell.configure(data: category[indexPath.item])
+        
         return cell
     }
     

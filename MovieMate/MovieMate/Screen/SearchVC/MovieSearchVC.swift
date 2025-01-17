@@ -18,21 +18,25 @@ class MovieSearchVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         configureUI()
         viewModel.getMovies()
     }
     
     func configureUI() {
+        collection.delegate = self
+        collection.dataSource = self
         navigationItem.title = "Search"
+        
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         backgroundSearch.layer.cornerRadius = backgroundSearch.frame.height / 2
         backgroundSearch.backgroundColor = UIColor(named: "SearchBarColor")
         searchTextField.attributedPlaceholder = NSAttributedString(string: "Search", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
         controllerView.backgroundColor = UIColor(named: "BackgroundColor")
         collection.backgroundColor = UIColor(named: "BackgroundColor")
-        collection.delegate = self
-        collection.dataSource = self
+        
         collection.register(UINib(nibName: "MovieCell", bundle: nil), forCellWithReuseIdentifier: "MovieCell")
+        
         searchTextField.addTarget(self, action: #selector(searchTextChanged), for: .editingChanged)
     }
     
@@ -55,12 +59,12 @@ extension MovieSearchVC: UICollectionViewDataSource, UICollectionViewDelegate, U
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(MovieCell.self)", for: indexPath) as! MovieCell
-        
         if viewModel.filteredMovies.count > 0 {
             cell.callElement(movie: viewModel.filteredMovies[indexPath.item].posterImage ?? "")
         } else {
             cell.callElement(movie: viewModel.movies[indexPath.item].posterImage ?? "")
         }
+        
         return cell
     }
     

@@ -67,16 +67,16 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
             
             return cell
         }
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(SegmentCell.self)", for: indexPath) as! SegmentCell
         
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(SegmentCell.self)", for: indexPath) as! SegmentCell
         if !viewModel.isSegmentCellConfigured {
             cell.configure(data: viewModel.categoryList)
             viewModel.isSegmentCellConfigured = true
         }
-        
         cell.categoryTapped = { [weak self] category in
             self?.viewModel.filterMoviesByCategory(category: category)
         }
+        
         return cell
     }
     
@@ -93,9 +93,9 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if indexPath.item == 0 { // Segment Cell
+        if indexPath.item == 0 {
             return CGSize(width: 393, height: 50)
-        } else { // Movie Cells
+        } else {
             return CGSize(width: 100, height: 145)
         }
     }

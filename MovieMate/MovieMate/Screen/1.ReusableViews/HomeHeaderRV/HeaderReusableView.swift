@@ -17,6 +17,7 @@ class HeaderReusableView: UICollectionReusableView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         configureUI()
     }
     

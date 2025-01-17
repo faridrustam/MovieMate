@@ -12,7 +12,7 @@ class UserDefaultsManager {
     func setBookmarkState(movieName: String, isBookmarked: Bool) {
         UserDefaults.standard.set(isBookmarked, forKey: "\(movieName)")
     }
-
+    
     func getBookmarkState(movieName: String) -> Bool {
         return UserDefaults.standard.bool(forKey: "\(movieName)")
     }

@@ -13,6 +13,11 @@ class MovieCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        configureUI()
+    }
+    
+    func configureUI() {
         moviePoster.layer.cornerRadius = moviePoster.frame.height / 8
         moviePoster.clipsToBounds = true
     }

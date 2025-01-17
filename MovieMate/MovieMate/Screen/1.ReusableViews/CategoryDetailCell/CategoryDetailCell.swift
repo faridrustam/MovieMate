@@ -15,6 +15,7 @@ class CategoryDetailCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         configureUI()
     }
     

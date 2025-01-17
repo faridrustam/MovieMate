@@ -13,17 +13,16 @@ class MovieDetailVC: UIViewController {
     @IBOutlet private weak var collection: UICollectionView!
     
     let viewModel = MovieDetailViewModel()
-    let dataManager = WatchListCoreData()
-    let userDefaultsManager = UserDefaultsManager()
     
     override func viewWillAppear(_ animated: Bool) {
-        NotificationCenter.default.addObserver(self, selector: #selector(handleMovieDeleted), name: Notification.Name("movieDeleted"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleMovieDeleted),
+                                               name: Notification.Name("movieDeleted"), object: nil)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         configureUI()
-        saveBookmark()
     }
     
     func configureUI() {
@@ -48,11 +47,12 @@ class MovieDetailVC: UIViewController {
                                                             target: self,
                                                             action: #selector(bookmarkButtonTapped))
         
+        saveBookmarkImage()
     }
     
-    func saveBookmark() {
+    func saveBookmarkImage() {
         if let movieName = viewModel.movieDetail?.movieName {
-            let isBookmarked = userDefaultsManager.getBookmarkState(movieName: movieName)
+            let isBookmarked = viewModel.userDefaultsManager.getBookmarkState(movieName: movieName)
             let imageName = isBookmarked ? "bookmark.fill" : "bookmark"
             navigationItem.rightBarButtonItem?.image = UIImage(systemName: imageName)
         }
@@ -61,7 +61,7 @@ class MovieDetailVC: UIViewController {
     @objc func handleMovieDeleted(_ notification: Notification) {
         guard let userInfo = notification.userInfo, let deletedMovieName = userInfo["movieName"] as? String else { return }
         if viewModel.movieDetail?.movieName == deletedMovieName {
-            userDefaultsManager.setBookmarkState(movieName: viewModel.movieDetail?.movieName ?? "", isBookmarked: false)
+            viewModel.userDefaultsManager.setBookmarkState(movieName: viewModel.movieDetail?.movieName ?? "", isBookmarked: false)
             navigationItem.rightBarButtonItem?.image = UIImage(systemName: "bookmark")
         }
     }
@@ -72,21 +72,23 @@ class MovieDetailVC: UIViewController {
     
     @objc func bookmarkButtonTapped() {
         guard let movieDetail = viewModel.movieDetail else { return }
-        let isCurrentlyBookmarked = userDefaultsManager.getBookmarkState(movieName: movieDetail.movieName ?? "")
+        let isCurrentlyBookmarked = viewModel.userDefaultsManager.getBookmarkState(movieName: movieDetail.movieName ?? "")
         let newBookmarkState = !isCurrentlyBookmarked
         
-        userDefaultsManager.setBookmarkState(movieName: movieDetail.movieName ?? "", isBookmarked: newBookmarkState)
+        viewModel.userDefaultsManager.setBookmarkState(movieName: movieDetail.movieName ?? "",
+                                             isBookmarked: newBookmarkState)
         
         let imageName = newBookmarkState ? "bookmark.fill" : "bookmark"
         navigationItem.rightBarButtonItem?.image = UIImage(systemName: imageName)
-        dataManager.fetchWatchList {
-            self.viewModel.movieSelected = self.dataManager.watchList
+        
+        viewModel.dataManager.fetchWatchList {
+            self.viewModel.movieSelected = self.viewModel.dataManager.watchList
         }
         if newBookmarkState {
-            dataManager.saveWatchList(movieModel: movieDetail)
+            viewModel.dataManager.saveWatchList(movieModel: movieDetail)
         } else {
             if let selectedMovie = viewModel.movieSelected.first(where: { $0.movieName == movieDetail.movieName }) {
-                dataManager.deleteWatchList(movie: selectedMovie, completion: nil)
+                viewModel.dataManager.deleteWatchList(movie: selectedMovie, completion: nil)
             } else {
                 print("Movie not found in the watchlist.")
             }

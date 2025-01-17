@@ -12,12 +12,11 @@ class WatchListVC: UIViewController {
     @IBOutlet private var controllerView: UIView!
     @IBOutlet private weak var table: UITableView!
     
-    let dataManager = WatchListCoreData()
     let viewModel = WatchListViewModel()
-    let userDefaultsManager = UserDefaultsManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         configureUI()
         configureRefreshControl()
     }
@@ -38,8 +37,7 @@ class WatchListVC: UIViewController {
     }
     
     @objc func handleRefreshControl() {
-        dataManager.fetchWatchList {
-            self.viewModel.watchList = self.dataManager.watchList
+        viewModel.fetchData {
             self.table.reloadData()
         }
         
@@ -59,24 +57,28 @@ extension WatchListVC: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "WatchListCell", for: indexPath) as! WatchListCell
         let data = viewModel.watchList[indexPath.row]
         
-        cell.callElement(posterImage: data.posterImage ?? "", movie: data.movieName ?? "", rating: data.rating, category: data.categoryId ?? "", year: data.releaseDate ?? "", duration: data.time ?? "")
+        cell.callElement(posterImage: data.posterImage ?? "",
+                         movie: data.movieName ?? "",
+                         rating: data.rating,
+                         category: data.categoryId ?? "",
+                         year: data.releaseDate ?? "",
+                         duration: data.time ?? "")
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let controller = storyboard?.instantiateViewController(identifier: "\(MovieDetailVC.self)") as! MovieDetailVC
-        let selectedWatchList = viewModel.watchList[indexPath.row]
-        controller.viewModel.movieDetail = selectedWatchList.toMovieModel()
+        controller.viewModel.movieDetail = viewModel.watchList[indexPath.row].toMovieModel()
+        
         navigationController?.show(controller, sender: nil)
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .destructive, title: "Watched") { (action, view, completionHandler) in
-            let movieToDelete = self.viewModel.watchList[indexPath.row]
-            NotificationCenter.default.post(name: Notification.Name("movieDeleted"), object: nil, userInfo: ["movieName": movieToDelete.movieName ?? ""])
-            print("Deleted Movie Name: \(movieToDelete.movieName ?? "no movbir")")
-            self.dataManager.deleteWatchList(movie: movieToDelete) {
+            NotificationCenter.default.post(name: Notification.Name("movieDeleted"), object: nil,
+                                            userInfo: ["movieName": self.viewModel.watchList[indexPath.row].movieName ?? ""])
+            self.viewModel.dataManager.deleteWatchList(movie: self.viewModel.watchList[indexPath.row]) {
                 self.viewModel.watchList.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .automatic)
                 

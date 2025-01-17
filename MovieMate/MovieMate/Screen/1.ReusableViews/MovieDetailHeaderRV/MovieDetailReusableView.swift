@@ -20,6 +20,7 @@ class MovieDetailReusableView: UICollectionReusableView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         configureUI()
     }
     
